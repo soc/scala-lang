@@ -10,12 +10,27 @@ title: Learn
       <p>Install Scala on your computer and start writing some Scala code!</p>
     </div>
     <div class="span4 doc-block">
-      <h3><a href="http://docs.scala-lang.org/overviews/">Overviews/Guides</a></h3>
-      <p>Access detailed documentation on important language features.</p>
+      <h3><a href="{{ site.baseurl }}/documentation/tutorial/java/">Tutorial</a></h3>
+      <p>This Scala tutorial for Java developers gets you up to speed.</p>
     </div>
     <div class="span4 doc-block">
-      <h3><a href="http://docs.scala-lang.org/tutorials/">Tutorials</a></h3>
-      <p>Digest bite-size pieces of the essentials.</p>
+      <h3><a href="{{ site.baseurl }}/documentation/overviews/">Overviews</a></h3>
+      <p>Access detailed documentation on important language features.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4 doc-block">
+      <h3><a href="{{ site.baseurl }}/documentation/cheatsheet">Cheatsheet</a></h3>
+      <p>Access language constructs quickly.</p>
+    </div>
+    <div class="span4 doc-block">
+      <h3><a href="{{ site.baseurl }}/documentation/styleguide/">Style Guide</a></h3>
+      <p>Learn how to code elegantly.</p>
+    </div>
+    <div class="span4 doc-block">
+      <h3><a href="{{ site.baseurl }}/documentation/faq/">Common Questions</a></h3>
+      <p>Frequent questions and answers about the Scala and its ecosystem.</p>
     </div>
   </div>
 
@@ -25,38 +40,15 @@ title: Learn
       <p>Dive straight into the API.</p>
     </div>
     <div class="span4 doc-block">
-      <h3><a href="{{ site.baseurl }}/files/archive/spec/2.11/">Specification</a></h3>
+      <h3><a href="{{ site.baseurl }}/documentation/specification/">Specification</a></h3>
       <p>Get an in-depth overview of the language.</p>
     </div>
     <div class="span4 doc-block">
-      <h3><a href="http://docs.scala-lang.org/glossary/">Glossary</a></h3>
+      <h3><a href="{{ site.baseurl }}/documentation/glossary/">Glossary</a></h3>
       <p>Understand Scala's vocabulary.</p>
     </div>
   </div>
-
-  <div class="row">
-    <div class="span4 doc-block">
-      <h3><a href="http://docs.scala-lang.org/cheatsheets/">Cheatsheets</a></h3>
-      <p>Access language constructs quickly.</p>
-    </div>
-    <div class="span4 doc-block">
-      <h3><a href="http://docs.scala-lang.org/style/">Style Guide</a></h3>
-      <p>Learn how to code elegantly.</p>
-    </div>
-    <div class="span4 doc-block">
-      <h3><a href="http://docs.scala-lang.org/tutorials/">Common Scala Questions</a></h3>
-      <p>Dispel your doubts about common Scala features.</p>
-    </div>
-  </div>
 </div>
-
-
-<!-- Keep this text here for now
-## The Scala Documentation Site
-
-Your main entry point into online documentation on Scala is the official documentation site, [docs.scala-lang.org](http://docs.scala-lang.org/). It contains a growing number of articles, guides and tutorials. The following list highlights some of the most important documents, but the doc site contains much more than that!
--->
-
 
 ## Online Learning
 

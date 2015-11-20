@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+
+  <link rel="icon" type="image/png" href="public/favicon.ico">
+  <link rel="shortcut icon" type="image/png" href="public/favicon.ico">
+
+  <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+  <title>{{ page.title }}</title>
+
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/resources/css/spec-screen.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/resources/css/spec-screen-toc.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/resources/css/spec-fonts.css">
+</head>
+
+<body>
+<header>
+  <div class="darkstrip"></div>
+  <div class="darkbluetopbar" id="header-main">
+    <img id="scala-logo" src="public/images/scala-spiral-white.png" />
+    <span id="title">Scala Language Specification</span>
+    <a id="github" href="https://github.com/scala/scala/tree/2.11.x/spec"><img src="public/images/github-logo@2x.png" alt="Edit at Github"></a>
+  </div>
+  <div class="midbluebar" id="header-sub">Version 2.11</div>
+</header>
+<main>
+{{ content }}
+</main>
+</body>
+</html>
