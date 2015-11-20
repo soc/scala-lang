@@ -1,0 +1,23 @@
+{% if page.languages %}
+  {% if page.language %}
+    {% assign rootURL = page.url | remove_first: page.language | remove_first: "/" %}
+    {% assign pageLanguage = page.language %}
+  {% else %}
+    {% assign rootURL = page.url %}
+    {% assign pageLanguage = "en" %}
+  {% endif %}
+<div style="float:right;padding-left:10px">
+  {% for language in page.languages %}
+    {% assign languageName = site.data.languages[language].name %}
+    {% assign languageDir  = "" %}
+    {% if language != "en" %}
+      {% capture languageDir %}{{ "/" | append: language }}{% endcapture %}
+    {% endif %}
+    {% if language == pageLanguage %}
+      {{languageName}}
+    {% else %}
+      <a href="{{ site.baseurl }}{{ languageDir }}{{ rootURL }}" class="lang">{{languageName}}</a>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}

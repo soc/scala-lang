@@ -25,5 +25,29 @@ pre.prettyprint {
 }
 
 /* Specify class=linenums on a pre to get line numbering */
-ol.linenums { margin: 0 0 0 40px; } /* IE indents via margin-left */
-ol.linenums > li { color: rgba(67, 94, 101, 0.6); line-height: 20px; width: 100%; s}
+ol.linenums {
+  margin: 0; /* IE indents via margin-left */
+  padding: 0;
+  list-style-type: none;
+}
+
+ol.linenums > li {
+  color: rgba(67, 94, 101, 0.6);
+  line-height: 20px;
+  width: 100%;
+  counter-increment: line;
+}
+
+
+
+ol.linenums > li:before {
+  text-align: right;
+  display: inline-block;
+  width: 20px;
+  margin-right: 1em;
+  content: counter(line) " ";
+}
+
+ol.linenums > li:first-child {
+  counter-reset: line;
+}
