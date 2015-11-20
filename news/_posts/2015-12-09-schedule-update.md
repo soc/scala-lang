@@ -14,7 +14,7 @@ M4 by the end of January (new trait encoding!), and M5 before Scala Days NYC (fe
 Our [GitHub milestones page](https://github.com/scala/scala/milestones) has projected dates,
 and will be updated with milestone details as they develop.
 
-[Big compiler changes](http://scala-lang.org/news/2.12-roadmap) are underway, between the new encodings for
+[Big compiler changes]({{ site.baseurl }}/news/2.12-roadmap) are underway, between the new encodings for
 lambdas and traits that take full advantage of Java 8, and the new optimizer. Both milestones will be an excellent
 opportunity to give 2.12 a spin before we cut RC1 (expected end of May). We're eager to hear your experience with 2.12,
 both online and in person at Scala Days NYC and Berlin!
@@ -39,7 +39,7 @@ Areas where participation is welcome include:
 
 You can talk to us about 2.12 on the [scala-internals mailing list](https://groups.google.com/forum/%23!forum/scala-internals) 
 and the [scala/contributors Gitter room](https://gitter.im/scala/contributors).
-(An [expanded community page](http://www.scala-lang.org/community/) on the Scala site lists these and other forums and resources.)
+(An [expanded community page]({{ site.baseurl }}/community) on the Scala site lists these and other forums and resources.)
 
 Your feedback will inform any revisions needed to the schedule described here.
 We'll keep you informed as we continue to refine [our release schedule](https://github.com/scala/scala/milestones).
@@ -91,4 +91,3 @@ make the last push to complete 2.12.0-RC1 according to this schedule.
 |   2.10.4          | *Mar 18, 2014*  |                                                                       |
 |   2.10.5          | *Mar 4, 2015*   | EOL two years after 2.10.1                                            |
 |   2.10.6          | *Sep 18, 2015*  | resolve license incompatibility                                       |
-

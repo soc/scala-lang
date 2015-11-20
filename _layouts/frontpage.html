@@ -3,186 +3,397 @@ layout: default
 ---
 
 {% include headertop.html %}
+    <!-- RSS feed -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.baseurl }}/feed/index.xml" />
 {% include headerbottom.html %}
 
-<!-- <div class="whitestripe">
-  <div class="container" style="height: 100%">
-    {% include navbar.html %}
-  </div>
-  <div class="color-stripe">&nbsp;</div>
-</div> -->
-
 <div class="splash">
-  <div class="darkbluestripe">&nbsp;</div>
+  <div class="darkblue-overlay">&nbsp;</div>
   <div class="container">
     <div class="row">
-      <div class="span12">
+      <div class="col-md-12">
         <div class="scala-logo">
-          <div class="spiral-logo"><img src="{{ site.baseurl }}/resources/img/scala-spiral-white.png"/></div>
-          <div class="scala-text">Scala</div>
+          <img src="{{ site.baseurl }}/resources/img/scala-logo-white.png" alt="Scala Logo" />
         </div>
-          {% include navbar.html %}
+        {% include navbar.html %}
       </div>
     </div>
     <div class="row">
-      <div class="span8" style="position: relative;">
+      <div class="col-md-12">
         <div class="splash-text ontop">
           <h2 style="font-weight: 700;">Object-Oriented Meets Functional</h2>
           <p class="splash-pitch">
-            Have the best of both worlds. Construct elegant class hierarchies
-            for maximum code reuse and extensibility, implement their behavior using
-            higher-order functions. Or anything in-between.
+            Enjoy the best of both worlds.<br/>
+            Develop fast, expressive applications and libraries.<br/>
+            Run them on the JVM, in the browser and on Android.
           </p>
-          <a id="learn-more-btn" href="{{ site.baseurl }}/what-is-scala.html">Learn More</a>
-          <!-- <a href="{{ site.baseurl }}/what-is-scala.html" class="btn small">Learn More</a> -->
-          <!-- <a href="{{ site.baseurl }}/api/" class="btn small">Scala API</a> -->
-        </div>
-      </div>
-      <div class="span4">
-        <div class="marker">
-          <div class="dot"></div>
-          <div class="pulse"></div>
-        </div>
-        <!-- <div class="scala-spiral"><img src="{{ site.baseurl }}/resources/img/smooth-spiral.png"/></div> -->
-      </div>
-    </div>
-
-  </div>
-</div>
-<div class="redstripe">&nbsp;</div>
-
-<div class="container">
-  <div class="row">
-    <div class="ring"><div class="inner-ring">&nbsp;</div></div>
-  </div>
-</div>
-
-<div class="newwhitestripe">
-  <!-- <p>This is some text.</p> -->
-  <!-- <div class="download-btn-wrap"><a id="download-btn" href="{{ site.baseurl }}/files/archive/scala-2.10.1.tgz">Download</a></div>
-  <div hidden>
-    <a id="link-main-unixsys" href="{{ site.baseurl }}/files/archive/scala-2.10.1.tgz"><a/>
-    <a id="link-main-windows" href="{{ site.baseurl }}/files/archive/scala-2.10.1.msi"><a/>
-  </div> -->
-</div>
-
- <div class="bullet-point-box">
-  <div class="container">
-    <div class="row">
-      <div class="span12 bullet-point">
-        <h2><span>Scala in a Nutshell</span></h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="span4 bullet-point">
-        <h3>Seamless Java Interop</h3>
-        <p>Scala runs on the JVM, so Java and Scala stacks can be freely mixed for totally seamless integration.</p>
-      </div>
-      <div class="span4 bullet-point">
-        <h3>Type Inference</h3>
-        <p>So the type system doesn’t feel so static.</p>
-      </div>
-      <div class="span4 bullet-point">
-        <h3>Parallelism/Distribution</h3>
-        <p>Use data-parallel operations on collections, use actors for concurrency and distribution, or futures for asynchronous programming.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="span4 bullet-point">
-        <h3>Traits</h3>
-        <p>Combine the flexibility of Java-style interfaces with the power of classes. Think principled multiple-inheritance.</p>
-      </div>
-      <div class="span4 bullet-point">
-        <h3>Pattern Matching</h3>
-        <p>Think “switch” on steroids. Match against class hierarchies, sequences, and more.</p>
-      </div>
-      <div class="span4 bullet-point">
-        <h3>Higher-Order Functions</h3>
-        <p>Functions are first-class objects. Compose them with guaranteed type safety. Use them anywhere, pass them to anything.</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="code-snippet-box">
-  <div class="container">
-    <div class="row">
-      <div class="span12 code-snippet">
-        <p>&nbsp;</p><p>&nbsp;</p>
-        <h2><span>Scala in Action</span></h2>
-        <p>&nbsp;</p>
-        <div id="codeCarousel" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="{{ site.baseurl }}/resources/img/carousel-bg.png" alt="">
-              <div class="container">
-                <div class="carousel-caption">
-                  <h1>Concise and powerful. Higher-order functions on collections.</h1>
-                   <p class="lead">Invoke the higher-order method “partition”, which takes a predicate (a function returning a Boolean) as its sole argument, using infix syntax. The two components of the result pair are assigned simultaneously to two new local variables using a tuple pattern. No need for clunky intermediate collections and for-loops.</p>
-                  <img src="{{ site.baseurl }}/resources/img/hof-code.png"/>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="{{ site.baseurl }}/resources/img/carousel-bg.png" alt="">
-              <div class="container">
-                <div class="carousel-caption">
-                  <h1 style="margin-left: 20px">Pattern matching.</h1>
-                  <p class="lead" style="float: left; width: 320px; margin-left: 20px;">Enable pattern matching on classes and singleton objects using the case modifier. Match against trees, extracting its fields using variables in a pattern like “Binary(e, l, r)”.
-                  </p>
-                  <img src="{{ site.baseurl }}/resources/img/patmat-code.png" style="float: right; margin-top: -36px;"/>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="{{ site.baseurl }}/resources/img/carousel-bg.png" alt="">
-              <div class="container">
-                <div class="carousel-caption">
-                  <h1 style="margin-left: 20px">Type Inference, Class Parameters, and String Interpolation.</h1>
-                  <p class="lead" style="float: left; width: 320px; margin-left: 20px;">The type “List[Int]” of “l” is inferred automatically. The primary constructor of class “Person” assigns its arguments to public fields “name” and “age”.
-                  </p>
-                  <img src="{{ site.baseurl }}/resources/img/type-inf-code.png" style="float: right; margin-top: -36px;"/>
-                </div>
-              </div>
-            </div>
+          <a class="learn-more-btn" href="{{ site.baseurl }}/what-is-scala.html">Learn More</a>
+          <div class="marker">
+            <div class="dot"></div>
+            <div class="pulse"></div>
           </div>
-          <a class="left carousel-control no-analytics" href="#codeCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="right carousel-control no-analytics" href="#codeCarousel" data-slide="next">&rsaquo;</a>
+          <div class="tip">
+            Scala began life in 2003, created by Martin Odersky and his research group at EPFL, next to Lake Geneva and the Alps, in Lausanne, Switzerland.<br/>Scala has since grown into a mature open source programming language, used by hundreds of thousands of developers, and is developed and maintained by scores of people all over the world.
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="container central get-scala">
+  <div class="translucent-circle"></div>
+  <div class="opaque-circle"></div>
+  <a class="central-btn download" id="main-download-button" href="{{ site.baseurl }}/download/">Download</a>
+  <a class="central-btn api" href="http://www.scala-lang.org/api/">API Docs&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  <div class="big-scala-spiral"><img src="{{ site.baseurl }}/resources/img/smooth-spiral.png" alt="Spiral" /></div>
+  <div class="central-btn scala-version"><span class="superbold">Scala</span><br/>{{ site.scalaversion }}</div>
+</div>
 
-<div class="events-training-twitter-box">
+<div class="darkbluebar">
+  <div class="container" style="position: relative;">
+    <div class="left-side">
+      <p class="getting-started"><a href="{{ site.baseurl }}/documentation/getting-started.html"><b>Getting Started</b></a></p>
+      <p class="dev-releases"><img src="{{ site.baseurl }}/resources/img/gears.png" alt="gears icon" /><a href="{{ site.baseurl }}/download/">&nbsp;Milestones, nightlies, etc.</a></p>
+      <p class="all-releases"><img src="{{ site.baseurl }}/resources/img/list.png" alt="list icon" /><a href="{{ site.baseurl }}/download/all.html">&nbsp;All Previous Releases</a></p>
+    </div>
+    <div class="right-side">
+      <p class="getting-started"><a href="http://www.scala-lang.org/api/current/"><b>Current API Docs</b></a></p>
+      <p class="dev-releases"><img src="{{ site.baseurl }}/resources/img/list.png" alt="list icon" /><a href="{{ site.baseurl }}/documentation/api.html">&nbsp;API Docs (other versions)</a></p>
+      <p class="dev-releases"><img src="{{ site.baseurl }}/resources/img/books.png" alt="books icon" /><a href="{{ site.baseurl }}/documentation/">&nbsp;Scala Documentation</a></p>
+      <p class="all-releases"><img src="{{ site.baseurl }}/resources/img/books.png" alt="books icon" /><a href="{{ site.baseurl }}/documentation/specification/">&nbsp;Language Specification</a></p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="bullet-point-box" id="nutshell">
+  <div class="bullet-row-1-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bullet-point">
+          <h2><span>Scala in a Nutshell</span></h2>
+          <p class="click">&nbsp;click the boxes below to see Scala in action!&nbsp;</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 bullet-point snippet-link" id="java-interop">
+          <h3>Seamless Java Interop</h3>
+          <p>Scala runs on the JVM, so Java and<br/>
+             Scala stacks can be freely mixed for<br/>
+             totally seamless integration.</p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="type-inference">
+          <h3>Helpful &amp; Expressive Types</h3>
+          <p>Don’t work for the type system.<br/>
+             Let the type system work for you!</p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="concurrency-distribution">
+          <h3>Concurrency &amp; Distribution</h3>
+          <p>Run operations on collections in parallel,<br>
+             use actors for concurrency and distribution,<br/>
+             or futures for asynchronous programming.</p>
+        </div>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
+
+  <div class="code-snippet-row" id="code-snippet-row1">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+
+  <div class="bullet-row-2-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 bullet-point snippet-link" id="traits">
+          <h3>Traits</h3>
+          <p>Combine the flexibility of Java-style<br/>
+             interfaces with the power of classes.<br/>
+             Think principled multiple-inheritance.</p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="pattern-matching">
+          <h3>Pattern Matching</h3>
+          <p>A “switch” statement on steroids:<br/>
+             Match against values, objects,<br/>
+             types, collections, and more.</p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="higher-order-functions">
+          <h3>Higher-Order Functions</h3>
+          <p>Functions are first-class objects.<br/>
+             Compose them with guaranteed type safety.<br/>
+             Use them anywhere, pass them to anything.</p>
+        </div>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
+
+  <div class="code-snippet-row" id="code-snippet-row2">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+
+  <div class="bullet-row-3-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 bullet-point snippet-link">
+          <h3>Extensible</h3>
+          <p>Breathe new life into your existing codebase!<br/>
+             Add new capabilities with context bounds or<br />
+             extend your types with implicit classes.</p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link less-letter-spacing">
+          <h3>Scalable</h3>
+          <p>From small scripts that automate simple tasks<br/>
+             to large mission-critical business applications,<br/>
+             Scala grows with you.</p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link less-letter-spacing">
+          <h3>Stable &amp; Mature Ecosystem</h3>
+          <p>Be up and running fast and get your work done.<br/>
+             Have both first-class Scala libraries as well as<br/>
+             all the platforms' libraries ready at your disposal!
+          </p>
+        </div>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
+
+  <div class="code-snippet-row" id="code-snippet-row3">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+
+{% include where-to-learn-more.html %}
+</div>
+
+<!-- hidden code-snippet content -->
+<div class="hidden-code-snippet" id="hidden-java-interop">{% include bullet-java-interop.html %}</div>
+<div class="hidden-code-snippet" id="hidden-type-inference">{% include bullet-type-inference.html %}</div>
+<div class="hidden-code-snippet" id="hidden-concurrency-distribution">{% include bullet-concurrency-distribution.html %}</div>
+<div class="hidden-code-snippet" id="hidden-traits">{% include bullet-traits.html %}</div>
+<div class="hidden-code-snippet" id="hidden-pattern-matching">{% include bullet-pattern-matching.html %}</div>
+<div class="hidden-code-snippet" id="hidden-higher-order-functions">{% include bullet-higher-order-functions.html %}</div>
+
+<div class="bullet-point-box" id="platforms">
+  <div class="bullet-row-4-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bullet-point">
+          <h2><span>Scala Platforms</span></h2>
+          <p class="click">&nbsp;click the boxes below to see where you can run Scala!&nbsp;</p>
+        </div>
+      </div>
+      <div class="row">
+        <a href="jvm">
+          <div class="col-md-4 bullet-point snippet-link" id="jvm">
+            <h3>On the JVM</h3>
+            <p><img src="{{ site.baseurl }}/resources/img/logos/jvm.svg" style="width: 150px; height: 150px"/></p>
+          </div>
+        </a>
+        <a href="browser">
+          <div class="col-md-4 bullet-point snippet-link" id="browser">
+            <h3>In the Browser</h3>
+            <p><img src="{{ site.baseurl }}/resources/img/logos/js.svg" style="width: 110px; height: 110px; padding-top:20px"/></p>
+          </div>
+        </a>
+        <a href="android">
+          <div class="col-md-4 bullet-point snippet-link" id="android">
+            <h3>On Android</h3>
+            <p><img src="{{ site.baseurl }}/resources/img/logos/android.svg" style="width: 120px; height: 120px; padding-top:15px"/></p>
+          </div>
+        </a>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
+
+  <div class="code-snippet-row" id="code-snippet-row4">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- hidden code-snippet content -->
+
+<div class="bullet-point-box" id="tooling">
+  <div class="bullet-row-5-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bullet-point">
+          <h2><span>Scala Tooling</span></h2>
+          <p class="click">&nbsp;click the boxes below to see which tools Scala provides!&nbsp;</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 bullet-point snippet-link" id="eclipse">
+          <h3>Scala IDE</h3>
+          <p>Eclipse-based ...<br/>
+             </p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="intellij">
+          <h3>IntelliJ IDEA</h3>
+          <p>IntelliJ's Scala plugin is JetBrain's<br>
+             most popular plugin.<br/>
+             </p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="emacs">
+          <h3>Emacs</h3>
+          <p>Ensime ...<br/>
+             <br/>
+             </p>
+        </div>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
+
+  <div class="code-snippet-row" id="code-snippet-row5">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+
+  <div class="bullet-row-6-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 bullet-point snippet-link" id="sublime">
+          <h3>Sublime</h3>
+          <p><br/>
+             <br/>
+             </p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="atom">
+          <h3>Atom</h3>
+          <p><br/>
+             <br/>
+             </p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="vim">
+          <h3>Vim</h3>
+          <p><br/>
+             <br/>
+             </p>
+        </div>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
+
+  <div class="code-snippet-row" id="code-snippet-row6">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+
+  <div class="bullet-row-7-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 bullet-point snippet-link" id="sbt">
+          <h3>SBT, the Scala Build Tool</h3>
+          <p>While Scala is well-supported by Maven,<br/>
+             Ant and other build tools, SBT provides some<br/>
+             additional features to make your life easier!</p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link" id="stylelint">
+          <h3>Stylecheckers &amp; Linters</h3>
+          <p></p>
+        </div>
+        <div class="col-md-4 bullet-point snippet-link">
+          <h3>Binary Compatibility Checker</h3>
+          <p>Scala's MiMa tool (migration manager)<br/>
+             allows you to check whether a change<br/>
+             would break older clients of the library.</p>
+        </div>
+      </div>
+      <div class="code-snippet-arrow"></div>
+    </div>
+  </div>
+
+  <div class="code-snippet-row" id="code-snippet-row7">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+
+{% include where-to-learn-more.html %}
+</div>
+
+<!-- hidden code-snippet content -->
+<div class="hidden-code-snippet" id="hidden-sbt"></div>
+<div class="hidden-code-snippet" id="hidden-eclipse"></div>
+<div class="hidden-code-snippet" id="hidden-intellij"></div>
+<div class="hidden-code-snippet" id="hidden-emacs"></div>
+<div class="hidden-code-snippet" id="hidden-sublime"></div>
+<div class="hidden-code-snippet" id="hidden-atom"></div>
+<div class="hidden-code-snippet" id="hidden-vim"></div>
+<div class="hidden-code-snippet" id="hidden-stylehint"></div>
+
+<div class="events">
   <div class="container">
     <div class="row">
-      <div class="span12 happening">
-        <p>&nbsp;</p><p>&nbsp;</p>
-        <h2><span>What’s going on with Scala</span></h2>
-        <p>&nbsp;</p>
+      <div class="col-md-12 upcoming-events">
+        <h2><span>Upcoming Events</span></h2>
+      </div>
+      <div class="col-md-12" id="eventspane"></div>
+    </div>
+  </div>
+  <div class="add-event"><a href="{{ site.baseurl }}/events">See more events</a> or <a href="https://github.com/scala/scala-lang/tree/master/events">add one to our feed</a></div>
+</div>
+
+<div class="training">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 upcoming-training">
+        <h2><span>Upcoming Training</span></h2>
+      </div>
+      <div class="col-md-12" id="trainingspane"></div>
+    </div>
+  </div>
+  <div class="add-training"><a href="{{ site.baseurl }}/training">See more trainings</a> or <a href="https://github.com/scala/scala-lang/tree/master/training">add one to our feed</a></div>
+</div>
+
+<div class="news">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
       </div>
     </div>
     <div class="row">
-      <div class="span6">
-        <div class="news">News, Articles, Blog</div>
-        {% include news-feed.html %}
-        <div class="news-archive">
-          <a href="{{ site.baseurl }}/news/" title="News archive">News archive</a> --
-          <a href="{{ site.baseurl }}/blog/" title="News archive">Blog</a>
-        </div>
+      {% include news-feed.html %}
+    </div>
+  </div>
+</div>
+
+<div class="twitter">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="twitterhdr"><span>Scala on Twitter</span></h2>
       </div>
-      <div class="span3">
-        <div id="eventsAndTraining">
-          <div class="trainings-events">Events</div>
-          <div id="eventspane"></div>
-          <div class="trainings-events">Training</div>
-          <div id="trainingspane"></div>
-        </div>
-      </div>
-      <div class="span3">
-        <div class="scala-lang-twitter"><img src="{{ site.baseurl }}/resources/img/twitter-logo.png"/><a href="http://twitter.com/scala_lang">@scala-lang</a></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         <div id="tweets" class="tweets"></div>
+        <br/>&nbsp;
+        <div class="see-more-tweets">See more tweets, or</div>
+        <a id="twitter-btn" href="https://twitter.com/scala_lang">Follow Scala on Twitter</a>
+        <br/><a style="border-bottom: 0px;" href="https://twitter.com/scala_lang"><img style="padding-top: 8px;" src="{{ site.baseurl }}/resources/img/twitter-logo-white-lg.png" alt="white Twitter logo"/></a>
       </div>
     </div>
   </div>
@@ -190,10 +401,9 @@ layout: default
 
 <div class="epfl-picture-box">
   <div class="container">
-
   </div>
 </div>
 
-{{ content }}
-
-{% include footer.html %}
+{% include footertop.html %}
+    <script src="{{ site.baseurl }}/resources/js/frontpage.js" type="text/javascript"></script>
+{% include footerbottom.html %}
