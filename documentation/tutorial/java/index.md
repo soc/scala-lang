@@ -25,7 +25,7 @@ the Scala tools without knowing too much about the language. Here is
 how it looks:
 
     object HelloWorld {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         println("Hello, world!")
       }
     }
@@ -34,9 +34,9 @@ The structure of this program should be familiar to Java programmers:
 it consists of one method called `main` which takes the command
 line arguments, an array of strings, as parameter; the body of this
 method consists of a single call to the predefined method `println`
-with the friendly greeting as argument. The `main` method does not
-return a value (it is a procedure method). Therefore, it is not necessary
-to declare a return type.
+with the friendly greeting as argument. The result type of `Unit`
+signals that the `main` method does not return any value of interest
+(Scala's `Unit` is a bit like `void` in Java).
 
 What is less familiar to Java programmers is the `object`
 declaration containing the `main` method. Such a declaration
@@ -101,11 +101,10 @@ classes in the Scala class library--we can simply import the classes
 of the corresponding Java packages:
 
     import java.util.{Date, Locale}
-    import java.text.DateFormat
     import java.text.DateFormat._
 
     object FrenchDate {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val now = new Date
         val df = getDateInstance(LONG, Locale.FRANCE)
         println(df format now)
@@ -120,10 +119,9 @@ package or class, one uses the underscore character (`_`) instead
 of the asterisk (`*`). That's because the asterisk is a valid
 Scala identifier (e.g. method name), as we will see later.
 
-The import statement on the third line therefore imports all members
+The import statement on the second line therefore imports all members
 of the `DateFormat` class. This makes the static method
-`getDateInstance` and the static field `LONG` directly
-visible.
+`getDateInstance` and the static field `LONG` directly visible.
 
 Inside the `main` method we first create an instance of Java's
 `Date` class which by default contains the current date. Next, we
@@ -286,9 +284,7 @@ which looks at the right-hand side of these methods and deduces that
 both return a value of type `Double`.
 
 The compiler is not always able to infer types like it does here, and
-there is unfortunately no simple rule to know exactly when it will be,
-and when not. In practice, this is usually not a problem since the
-compiler complains when it is not able to infer a type which was not
+will complain when it is not able to infer a type which was not
 given explicitly. As a simple rule, beginner Scala programmers should
 try to omit type declarations which seem to be easy to deduce from the
 context, and see if the compiler agrees. After some time, the
@@ -331,7 +327,7 @@ is specified, as in the `Complex` example of previous section,
 It is possible to override methods inherited from a super-class in
 Scala. It is however mandatory to explicitly specify that a method
 overrides another one using the `override` modifier, in order to
-avoid accidental overriding. As an example, our `Complex` class
+prevent accidental overriding. As an example, our `Complex` class
 can be augmented with a redefinition of the `toString` method
 inherited from `Object`.
 
@@ -652,11 +648,6 @@ course, but discussing their applications in length is outside the
 scope of this document.
 
 ## Genericity
-
-The last characteristic of Scala we will explore in this tutorial is
-genericity. Java programmers should be well aware of the problems
-posed by the lack of genericity in their language, a shortcoming which
-is addressed in Java 1.5.
 
 Genericity is the ability to write code parametrized by types. For
 example, a programmer writing a library for linked lists faces the
