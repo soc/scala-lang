@@ -6,19 +6,18 @@ title: Common Questions
 ## General
 
 ### What is Scala?
-See [What is Scala](http://scala-lang.org/what-is-scala.html) by Martin Odersky
+See [What is Scala](http://scala-lang.org/what-is-scala.html) article by Martin Odersky
 
 ### What is Scala’s history?
 Maybe http://www.artima.com/weblogs/viewpost.jsp?thread=163733 or https://www.artima.com/scalazine/articles/origins_of_scala.html ?
 
-### What are the Scala guys currently working on?
+### What are the Scala people currently working on?
 Java 8 support, focus on compatibility between 2.11 and 2.12, etc.
 
 ### What are Scala's plans for the future?
 TASTY, dotty, DOT, mechanized soundness proof, SBT 1.0, union/intersection types, singleton types, optimizations, macros, ...
 
 ### Is Scala harder to use than X?
-**JH: Possibly too big for the FAQ section, move to its own article?** <br/>
 No => show list of things Scala doesn’t have or simplifies, but harder to learn, because ...
 Something along the lines of:
 During the debate, I think there was a great question/comment about Scala being not too "separable" in terms of learning concepts of the language: https://youtu.be/xUWNcL7NRxg?t=29m40s
@@ -31,24 +30,23 @@ This could also explain a bit why people say "Scala is hard, ... but I can kind 
 
 What do you think?
 
-**Martin:** Yes, I think that's spot on. Orthogonality of features makes a language harder to learn. 
+Martin: Yes, I think that's spot on. Orthogonality of features makes a language harder to learn. 
 
 ## Development
 
 ### Which editors and IDEs support Scala?
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/) using their official [Scala plugin](https://plugins.jetbrains.com/plugin/?id=1347)
 * [ScalaIDE](http://scala-ide.org/) for [Eclipse](https://eclipse.org/)
-* Emacs, Vim, Sublime, ...
-* [ENSIME](https://github.com/ensime) wich supports a variety of editors like Vim, Emacs, Sublime, ...
+* Standard text editors like Emacs, Sublime, Vim, ...
+* [ENSIME](https://github.com/ensime) wich supports a variety of editors like Emacs, Sublime, Vim, ...
 
 ### Can you debug Scala code?
 Same way as you debug a Java app, SBT, IntelliJ. See also http://stackoverflow.com/questions/4150776/debugging-scala-code-with-simple-build-tool-sbt-and-intellij
 
 Any caveats as Scala is functional? How do you debug functions / closures? See also http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala
 
-### Why does Scala have its own build tool, SBT?
-**JH: Do we really need to ask Why?** <br/>
-Shouldn't the Q be **How do you build Scala code?** and mention that SBT is standard / recommended way as it's Scala based...
+### Why does Scala have its own build tool (SBT)?
+SBT is standard / recommended way as it's Scala based, mention additional features compared to other build tools
 
 ### Which other build tools are supported?
 Mention maven, plugins, ...
@@ -60,17 +58,16 @@ Todo...
 Todo...
 
 ### What are Scala's compatibility guarantees?
-**JH: Compare with Java's guarantees**
+Compare with Java's guarantees?
 
-### Why does Scala use "i: Int" syntax?
-(instead of the "Int i" syntax that Java uses)
-It improves readability especially in combination with Scala's powerful type inference. Example:
+### Why does Scala use "i: Int" syntax instead of "Int i"?
+It improves readability especially in combination with Scala's type inference. Example:
 ```scala
 (1 to 10).map((x: Int) => x*x) // explicit type annotation
 (1 to 10).map((x) => x*x) // uses type inference
 (1 to 10).map((Int x) => x*x) // not valid Scala syntax
 ```
-The snippet 1 is unnecessarily verbose as the compiler knows that parameter x must be of type Int. Snippet 2 shows the same code using type inference. Snippet 3 shows how it would look like with Java syntax, which is less readable in Scala.
+Line 1 is unnecessarily verbose as the compiler knows that parameter x must be of type Int. Line 2 shows the same code using type inference. Line 3 shows how it would look like in Java syntax, which is less readable in Scala.
 
 This is not issue in Java, because it has no type inference, so it is clear that the first token is type and second token is identifier. If Scala used this syntax, it would not be so clear, because you can omit the type in some cases.
 
@@ -78,10 +75,10 @@ This is not issue in Java, because it has no type inference, so it is clear that
 Todo...
 
 ### Why does Scala provide implicit classes instead of extension methods?
-**JH: Possibly not a good Q for the FAQ section / too specific**
+Todo...
 
 ### What does _ (underscore) mean?
-_ can be used in many places in Scala and its meaning depends on the context it is used. It usually means "I need to refer to something, but I don't need it so I won't give it a name". Examples:
+It can be used in many places in Scala and its meaning depends on the context it is used. It usually means *I need to refer to something, but I don't need it so I won't give it a name*. Examples:
 ```scala
 import foo._
 x match { case (“a”, _) => ... }
@@ -111,12 +108,10 @@ Nothing is a type which has no value. Don’t confuse this with the Unit (or voi
 
 `if(x == 0) sys.error(“x shall not be zero”) else 5/x`
 
-link to Scala's class hierarchy?
-
 ## JVM
 
-### What do ops people you need to know to run Scala applications?
-devops, compared to Java apps, “Just another jar file” etc.
+### What do you need to know to run Scala applications in production?
+ops teams, devops, compared to Java apps, “Just another jar file” etc.
 
 ### Garbage collection?
 Todo...
@@ -126,7 +121,7 @@ Todo...
 ### Can Scala run in the browser?
 Yes. ...
 
-**JH: I'd remove the Scala.js specific Qs and rather link to a separate article explaining the Scala/Web connection in more depth**
+JH: Remove the more specific Qs and link to a dedicated article?
 
 ### How large are Scala.js applications?
 
@@ -151,10 +146,10 @@ JS native code?
 
 ## Mobile
 
-### Can Scala be used to write Android apps?
-Todo...
+### Can Scala be used to write Mobile apps?
+Todo... mention Android
 
-**JH: Again I'd remove the Android specific Qs and link to a separate article explaining the Scala/Android connection in more depth**
+JH: Remove the more specific Qs and link to a dedicated article?
 
 ### How large are Android apps written in Scala?
 smallest size is about 1mb (vs. 50kb for java) everything else scales linearly
