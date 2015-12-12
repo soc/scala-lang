@@ -3,6 +3,17 @@ layout: page-full-width
 title: Overviews
 ---
 
+#### Literals
+
+<div class="container">
+  <div class="row">
+    <div class="span4 doc-block">
+      <h3><a href="strings">Strings</a></h3>
+      <p></p>
+    </div>
+  </div>
+</div>
+
 #### Classes, Traits & Objects
 
 <div class="container">
