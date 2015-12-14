@@ -44,6 +44,17 @@ title: Overviews
   </div>
 </div>
 
+#### Numbers & Strings
+
+<div class="container">
+  <div class="row">
+    <div class="span4 doc-block">
+      <h3><a href="{{ site.baseurl }}/documentation/overviews/strings">Strings</a></h3>
+      <p></p>
+    </div>
+  </div>
+</div>
+
 #### Generics
 
 <div class="container">
