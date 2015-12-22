@@ -293,28 +293,7 @@ $(document).ready(function(){
     }
   }
 
-  function onTrainingsAjaxSuccess(response, textStatus, jqXHR) {
-    var allTrainings = scalaLangTrainings;
-    for (var i in response)
-      allTrainings = allTrainings.concat(response[i]);
-    doPopulateTrainingsPane(allTrainings);
-  }
-
-  function onTrainingsAjaxError(jqXHR, textStatus, errorThrown) {
-    // log the error to the console
-    console.error(
-      "Could not load Typesafe training feed: " + textStatus, errorThrown);
-    // but at least display trainings from scala-lang
-    doPopulateTrainingsPane(scalaLangTrainings);
-  }
-
-  $.ajax({
-    url: "http://scala-lang.org/resources/php/typesafe-feed-trainings.php",
-    type: "GET",
-    dataType: "json",
-    success: onTrainingsAjaxSuccess,
-    error: onTrainingsAjaxError
-  });
+  doPopulateTrainingsPane(scalaLangTrainings);
 
   })();
 
