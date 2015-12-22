@@ -197,30 +197,7 @@ $(document).ready(function(){
     }
   };
 
-<<<<<<< 66e296d205630100b8237bddcaedf63f7fde4423
-  function onEventsAjaxSuccess(response, textStatus, jqXHR) {
-    var allEvents = scalaLangEvents.concat(response);
-    doPopulateEventsPane(allEvents);
-  }
-
-  function onEventsAjaxError(jqXHR, textStatus, errorThrown) {
-    // log the error to the console
-    console.error(
-      "Could not load Lightbend event feed: " + textStatus, errorThrown);
-    // but at least display events from scala-lang
-    doPopulateEventsPane(scalaLangEvents);
-  }
-
-  $.ajax({
-    url: "{{ site.baseurl }}/resources/php/typesafe-feed-events.php",
-    type: "GET",
-    dataType: "json",
-    success: onEventsAjaxSuccess,
-    error: onEventsAjaxError
-  });
-=======
   doPopulateEventsPane(scalaLangEvents);
->>>>>>> Content migration, version upgrades
 
   })();
 
@@ -316,28 +293,7 @@ $(document).ready(function(){
     }
   }
 
-  function onTrainingsAjaxSuccess(response, textStatus, jqXHR) {
-    var allTrainings = scalaLangTrainings;
-    for (var i in response)
-      allTrainings = allTrainings.concat(response[i]);
-    doPopulateTrainingsPane(allTrainings);
-  }
-
-  function onTrainingsAjaxError(jqXHR, textStatus, errorThrown) {
-    // log the error to the console
-    console.error(
-      "Could not load Lightbend training feed: " + textStatus, errorThrown);
-    // but at least display trainings from scala-lang
-    doPopulateTrainingsPane(scalaLangTrainings);
-  }
-
-  $.ajax({
-    url: "http://scala-lang.org/resources/php/typesafe-feed-trainings.php",
-    type: "GET",
-    dataType: "json",
-    success: onTrainingsAjaxSuccess,
-    error: onTrainingsAjaxError
-  });
+  doPopulateTrainingsPane(scalaLangTrainings);
 
   })();
 
