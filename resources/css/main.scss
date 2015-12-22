@@ -584,9 +584,8 @@ a.brand {
   float: left;
   text-align: left;
   min-height: 80px;
-  margin-right: 8px;
-  width: 160px;
-  padding: 10px;
+  width: 175px;
+  padding: 8px;
 }
 
 .event-item-wrap:hover {
@@ -616,13 +615,9 @@ a.brand {
   font-size: 17px;
   font-weight: bold;
   line-height: 0.95em;
-}
-
-.event-title a:link,
-.event-title a:visited {
-  /*color: #A2B5BA;*/
   color: #fff;
   border: none;
+  padding-bottom: 1px;
 }
 
 .event-float-right {
@@ -630,7 +625,7 @@ a.brand {
   position: relative;
   float: left;
   height: 54px;
-  width: 128px;
+  padding-top: 2px;
 }
 
 .event-float-right,
@@ -647,7 +642,7 @@ a.brand {
   font-weight: 600;
 }
 
-.events-page .event-title > a,
+.events-page .event-title,
 .events-page .event-date,
 .events-page .event-location {
   color: $medium-blue;
@@ -658,6 +653,7 @@ a.brand {
   color: #839496;
   font-size: 13px;
   line-height: 1.1em;
+  padding-top: 1px;
 }
 
 .event-logo {
@@ -668,7 +664,7 @@ a.brand {
   height: 54px;
 }
 
-.event-logo > a > img {
+.event-logo > img {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
