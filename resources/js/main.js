@@ -182,17 +182,18 @@ $(document).ready(function(){
         }
       }
       var thisContent =
-        '<div class="event-item-wrap '+additionalClass+'" onclick="window.location=\''+event.url+'\'">' +
+        '<a href="'+event.url+'">' +
+        '<div class="event-item-wrap '+additionalClass+'">' +
           '<div class="event-item">' +
-            '<div class="event-title"><a href="'+event.url+'">'+event.title+'</a></div>' +
-            '<div class="event-logo"><a href="'+event.url+'"><img class="event-logo" src="'+event.logo+'" alt="Logo" /></a></div>' +
+            '<div class="event-title">'+event.title+'</div>' +
+            '<div class="event-logo"><img class="event-logo" src="'+event.logo+'" alt="Logo" /></div>' +
             '<div class="event-float-right">' +
               '<div class="event-location">'+event.location+'</div>' +
-              '<div class="event-date">'+
-                date + '</div>' +
+              '<div class="event-date">'+ date + '</div>' +
               '</div>' +
           '</div>' +
-        '</div>';
+        '</div>' +
+        '</a>';
       $("#eventspane").append(thisContent);
     }
   };
