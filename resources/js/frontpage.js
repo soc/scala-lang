@@ -161,7 +161,7 @@ $(document).ready(function(){
           </div>\
           <div class="raw bottom-anchored">\
             <div class="avatar-wrapper">\
-              <img class="avatar" width="50" height="50" src="" />\
+              <img class="avatar" width="48" height="48" src="" />\
             </div>\
             <span class="tweet-username">\
               <a href="" class="username" rel="external"></a>\
