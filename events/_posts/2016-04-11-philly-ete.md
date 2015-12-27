@@ -1,7 +1,7 @@
 ---
 title: Philly ETE
 logo: /resources/img/phillyete2014.png
-location: Philadelphia
+location: Philadelphia, US
 description: ""
 start: 11 April 2016
 end: 12 April 2016
