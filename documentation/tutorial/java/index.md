@@ -163,26 +163,10 @@ arithmetic expression like the following:
 consists exclusively of method calls, because it is equivalent to the
 following expression, as we saw in the previous section:
 
-    (1).+(((2).*(3))./(x))
+    1.+(2.*(3)./(x))
 
 This also means that `+`, `*`, etc. are valid identifiers
 in Scala.
-
-The parentheses around the numbers in the second version are necessary
-because Scala's lexer uses a longest match rule for tokens.
-Therefore, it would break the following expression:
-
-    1.+(2)
-
-into the tokens `1.`, `+`, and `2`.  The reason that
-this tokenization is chosen is because `1.` is a longer valid
-match than `1`.  The token `1.` is interpreted as the
-literal `1.0`, making it a `Double` rather than an
-`Int`.  Writing the expression as:
-
-    (1).+(2)
-
-prevents `1` from being interpreted as a `Double`.
 
 ### Functions are objects
 
@@ -212,13 +196,13 @@ endlessly prints the sentence "time flies like an arrow" every
 second.
 
     object Timer {
-      def oncePerSecond(callback: () => Unit) {
+      def oncePerSecond(callback: () => Unit): Unit = {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def timeFlies() {
+      def timeFlies(): Unit = {
         println("time flies like an arrow...")
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(timeFlies)
       }
     }
@@ -240,10 +224,10 @@ program using an anonymous function instead of *timeFlies* looks
 like that:
 
     object TimerAnonymous {
-      def oncePerSecond(callback: () => Unit) {
+      def oncePerSecond(callback: () => Unit): Unit = {
         while (true) { callback(); Thread sleep 1000 }
       }
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         oncePerSecond(() =>
           println("time flies like an arrow..."))
       }
@@ -298,7 +282,7 @@ order to call them, one has to put an empty pair of parenthesis after
 their name, as the following example shows:
 
     object ComplexNumbers {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val c = new Complex(1.2, 3.4)
         println("imaginary part: " + c.im())
       }
@@ -623,12 +607,12 @@ it is viewed as such, otherwise a `ClassCastException` is
 thrown.
 
 Finally, the last method to define is the predicate which tests for
-inferiority, as follows. It makes use of another predefined method,
-`error`, which throws an exception with the given error message.
+inferiority, as follows.
 
     def <(that: Any): Boolean = {
       if (!that.isInstanceOf[Date])
-        error("cannot compare " + that + " and a Date")
+        throw new UnsupportedoperationException(
+            "cannot compare " + that + " and a Date")
 
       val o = that.asInstanceOf[Date]
       (year < o.year) ||
@@ -670,7 +654,7 @@ empty or point to an object of some type.
 
     class Reference[T] {
       private var contents: T = _
-      def set(value: T) { contents = value }
+      def set(value: T): Unit = { contents = value }
       def get: T = contents
     }
 
@@ -692,7 +676,7 @@ contained by the cell. For example, to create and use a cell holding
 an integer, one could write the following:
 
     object IntegerReference {
-      def main(args: Array[String]) {
+      def main(args: Array[String]): Unit = {
         val cell = new Reference[Int]
         cell.set(13)
         println("Reference contains the half of " + (cell.get * 2))
