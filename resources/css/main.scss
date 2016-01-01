@@ -536,6 +536,10 @@ a.brand {
   background-color: $medium-blue;
 }
 
+#editors {
+  background-color: $dark-blue;
+}
+
 #tooling {
 }
 
@@ -1103,11 +1107,16 @@ h2.twitterhdr > span {
   background: $standard-blue;
 }
 
+#editors .bullet-point.col-md-12:hover {
+  background: $dark-blue;
+}
+
 #platforms .bullet-point.col-md-12:hover {
   background: $medium-blue;
 }
 
 #nutshell .bullet-point:hover,
+#editors .bullet-point:hover,
 #tooling .bullet-point:hover {
   background: rgba(41, 75, 83, 0.5);
 }
@@ -1137,6 +1146,10 @@ h2.twitterhdr > span {
 #nutshell .bullet-point > h2 > span,
 #tooling .bullet-point > h2 > span {
   background-color: $standard-blue;
+}
+
+#editors .bullet-point > h2 > span {
+  background-color: $dark-blue;
 }
 
 #platforms .bullet-point > h2 > span {
