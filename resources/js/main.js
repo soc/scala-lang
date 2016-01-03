@@ -127,11 +127,11 @@ $(document).ready(function(){
   // Stop early if the element does not exist, i.e., we're not on the front page
   if ($('#eventspane').length == 0)
     return;
-  var isFrontPage = $('.events').length != 0;
+  var isFrontPage = $('#events').length != 0;
   var additionalClass =
     isFrontPage ? 'event-item-front-page' : 'event-item-event-page';
 
-  var MAX_EVENTS = isFrontPage ? 5 : 15;
+  var MAX_EVENTS = isFrontPage ? 4 : 30;
 
   function compareEventsByDate(lhs, rhs) {
     return compareFormattedDates(lhs.start, rhs.start);
