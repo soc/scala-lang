@@ -509,7 +509,6 @@ a.brand {
   position: relative;
   text-align: center;
   width: 100%;
-  min-width:1024px;
   min-height: 400px;
   padding-top: 26px;
   padding-left: 0px;
@@ -642,7 +641,6 @@ a.brand {
 #training {
   position: relative;
   width: 100%;
-  min-width: 1024px;
   min-height: 400px;
   padding-top: 26px;
   padding-left: 0px;
@@ -991,7 +989,9 @@ h2.twitterhdr > span {
 }
 
 @media (min-width:1170px) {
-  .bullet-point-box {
+  .bullet-point-box,
+  .events,
+  .training {
     min-width: 1024px;
   }
 
