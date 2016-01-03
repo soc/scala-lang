@@ -1084,15 +1084,20 @@ h2.twitterhdr > span {
 
 .bullet-point-box {
   width: 100%;
-  min-width:1024px;
   padding-top: 16px;
   padding-left: 0px;
   padding-right: 0px;
   padding-bottom: 20px;
 }
 
-.bullet-point-box .container {
-  width: 1170px;
+@media (min-width:1170px) {
+  .bullet-point-box {
+    min-width: 1024px;
+  }
+
+  .bullet-point-box-large .container {
+    width: 1170px;
+  }
 }
 
 .bullet-point {
