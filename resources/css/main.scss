@@ -18,17 +18,17 @@ $green:         #859900; /*#F6E27F; #eec643; #859900;*/
 $dark-grey:     #3D626B;
 
 /* start override Bootstrap */
+/*
 @media (min-width:1200px) {
   .container {
     width:940px;
   }
 }
-
 @media (min-width:992px) {
   .container {
     width:940px;
   }
-}
+}*/
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -521,24 +521,8 @@ a.brand {
   text-align: center;
 }
 
-.upcoming-events > h2 {
-  font-family: $font-slab;
-  font-size: 20px;
-  color: #FFFFFF;
-  font-weight: $font-slab-weight;
-  font-style: italic;
-  margin-bottom: 12px;
-  margin-top: 0px;
-  background: url({{ site.baseurl }}/resources/img/white-line.png) center repeat-x;
-}
-
 .upcoming-events > h2 > span {
-  border-width: 0 34px;
-  height: 32px;
-  display: inline-block;
-  line-height: 35px;
   background-color: $medium-blue;
-  padding: 0 10px;
 }
 
 .event-item-wrap {
@@ -652,18 +636,6 @@ a.brand {
 
 .upcoming-training {
   text-align: center;
-}
-
-.upcoming-training > h2 {
-  font-family: $font-slab;
-  font-size: 20px;
-  /*color: #657B83;*/
-  color: #FFFFFF;
-  /*text-shadow: 1px 1px 0px #50B8E1;*/
-  font-weight: $font-slab-weight;
-  font-style: italic;
-  margin-top: 0px;
-  background: url({{ site.baseurl }}/resources/img/white-line.png) center repeat-x;
 }
 
 .upcoming-training > h2 > span {
@@ -988,17 +960,13 @@ h2.twitterhdr > span {
   padding-bottom: 20px;
 }
 
-@media (min-width:1170px) {
-  .bullet-point-box,
+@media (min-width:1024px) {
   .events,
   .training {
     min-width: 1024px;
   }
-
-  .bullet-point-box-large .container {
-    width: 1170px;
-  }
 }
+
 
 .bullet-point {
   text-align: center;
@@ -1066,17 +1034,21 @@ h2.twitterhdr > span {
   background: rgba(65, 142, 161, 0.2);
 }
 
-.bullet-point > h2 {
+.bullet-point > h2,
+.upcoming-events > h2,
+.upcoming-training > h2 {
   font-family: $font-slab;
   font-size: 20px;
-  color: #FFFFFF;
+  color: rgba(255,255,255,0.7);
   font-weight: $font-slab-weight;
   font-style: italic;
+  margin-top: 0px;
   margin-bottom: 0px;
   background: url({{ site.baseurl }}/resources/img/white-line.png) center repeat-x;
 }
 
-.bullet-point > h2 > span {
+.bullet-point > h2 > span,
+.upcoming-events > h2 > span {
   border-width: 0 34px;
   height: 32px;
   display: inline-block;
@@ -1275,7 +1247,6 @@ h2.twitterhdr > span {
   bottom: 22px;
   left: 0;
   right: 0;
-  color: rgba(23, 71, 83, 0.3);
 }
 
 .add-event {
@@ -1298,7 +1269,7 @@ h2.twitterhdr > span {
 .add-training a:visited {
   /*color: $dark-grey;*/
   /*color: #225966;*/
-  color: rgba(23, 71, 83, 0.5);
+  color: rgba(255, 255, 255, 0.4);
   border: none;
   /*border-bottom: solid 1px #DC322F;*/
 }
