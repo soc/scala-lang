@@ -2,7 +2,7 @@
 category: event
 title: ScalaSphere
 logo: /resources/img/scalasphere.png
-location: Kraków
+location: Kraków, Poland
 description: "Let’s immerse ourselves into Scala DevTools"
 start: 11 February 2016
 end: 12 February 2016
