@@ -18,17 +18,13 @@ $green:         #859900; /*#F6E27F; #eec643; #859900;*/
 $dark-grey:     #3D626B;
 
 /* start override Bootstrap */
-/*
-@media (min-width:1200px) {
-  .container {
-    width:940px;
+
+@media (max-width: 670px) {
+  .darkbluetopbar > .container > .navbar-wrap > .container > .scala-logo {
+    overflow: hidden;
+    width: 30px;
   }
 }
-@media (min-width:992px) {
-  .container {
-    width:940px;
-  }
-}*/
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
