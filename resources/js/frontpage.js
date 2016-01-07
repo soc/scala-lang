@@ -29,8 +29,8 @@ $(document).ready(function(){
   $(".splash").backstretch("{{ site.baseurl }}/resources/img/view-leman-opt2.jpg");
 
   // tooltips (front page)
-  $(".marker").mouseover(function(){ $(".tip").show(); });
-  $(".marker").mouseout(function(){ $(".tip").hide(); });
+  $(".marker").mouseover(function(){ $("#tip").show(); });
+  $(".marker").mouseout(function(){ $("#tip").hide(); });
 
   $("#source-code").mouseover(function(){ $(this).find(".toptip").show(); });
   $("#source-code").mouseout(function(){ $(this).find(".toptip").hide(); });
