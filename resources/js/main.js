@@ -131,7 +131,7 @@ $(document).ready(function(){
   var additionalClass =
     isFrontPage ? 'event-item-front-page' : 'event-item-event-page';
 
-  var MAX_EVENTS = isFrontPage ? 4 : 30;
+  var MAX_EVENTS = isFrontPage ? 5 : 30;
 
   function compareEventsByDate(lhs, rhs) {
     return compareFormattedDates(lhs.start, rhs.start);
