@@ -1688,11 +1688,11 @@ a.btn.download:hover, a.btn.download:focus { background-color:#58ccd5; border-co
   100% {-webkit-transform: scale(1);opacity: 0.0; }
  }
 
-.tip {
+#tip {
   display: none;
   position: absolute;
   top: 145px;
-  left: 680px;
+  left: 710px;
   background: rgba(133, 153, 0, 0.6);
   border: 0px;
   padding: 10px;
@@ -1705,7 +1705,7 @@ a.btn.download:hover, a.btn.download:focus { background-color:#58ccd5; border-co
   color: #fff;
 }
 
-.tip:after {
+#tip:after {
   position: absolute;
   display: inline-block;
   width: 0px;
@@ -1922,7 +1922,7 @@ a.for-platform {
   z-index: 50;
   position: absolute;
   top: 42px;
-  left: 142px;
+  left: 250px;
   width: 170px;
   font-family: $font-slab;
   font-size: 12px;
@@ -1935,8 +1935,8 @@ a.for-platform {
   z-index: 50;
   position: absolute;
   top: 42px;
-  right: 142px;
-  width: 160px;
+  right: 250px;
+  width: 170px;
   font-family: $font-slab;
   font-size: 12px;
   font-style: italic;
