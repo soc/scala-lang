@@ -15,6 +15,7 @@ $standard-blue: #073642;
 $medium-blue:   #174753;
 $light-blue:    #418EA1; /*#418EA1; #41B4A1; #98C38A,#72D0EB;*/
 $green:         #859900; /*#F6E27F; #eec643; #859900;*/
+$light-grey:    #839496;
 $dark-grey:     #3D626B;
 
 /* start override Bootstrap */
@@ -587,7 +588,7 @@ a.brand {
 
 .event-date {
   font-family: $font-slab;
-  color: #839496;
+  color: $light-grey;
   font-size: 13px;
   line-height: 1.1em;
   padding-top: 1px;
@@ -771,7 +772,7 @@ a.brand {
 .trainings-page .training-trainers-name,
 .trainings-page .training-location,
 .trainings-page .training-organizer {
-  color: #839496;
+  color: $light-grey;
 }
 
 .center {
@@ -1091,7 +1092,7 @@ h2.twitterhdr > span {
   margin: 0 15px 15px;
   font-size: 13pt;
   line-height: 17pt;
-  color: #839496;
+  color: $light-grey;
 }
 
 .snippet-link:hover {
@@ -1119,7 +1120,7 @@ h2.twitterhdr > span {
 }
 
 .news-item {
-  color: #839496;
+  color: $light-grey;
   /*border-bottom: solid 2px #93A1A1;*/
   padding-bottom: 8px;
   margin-bottom: 32px;
@@ -1181,7 +1182,7 @@ h2.twitterhdr > span {
 }
 
 .news-date {
-  color: #839496;/*$green;*/
+  color: $light-grey;/*$green;*/
   border-top: solid 1px #93A1A1;/*rgba(44, 56, 70, 0.4);*/
   margin-top: 8px;
   padding-top: 8px;
@@ -1251,12 +1252,12 @@ h2.twitterhdr > span {
   left: 0;
   right: 0;
   color: rgba(255, 255, 255, 0.2);
-  /*color: #839496;*/
+  /*color: $light-grey;*/
 }
 
 .add-event a:link,
 .add-event a:visited {
-  /*color: #839496;*/
+  /*color: $light-grey;*/
   color: rgba(255, 255, 255, 0.4);
   border: none;
 }
@@ -1435,7 +1436,7 @@ h2.twitterhdr > span {
 .tweet .text a { color: #DC322F; border: none; }
 .tweet .text a:hover { color: #00b0e3; text-decoration: none;}
 .original-tweet { font-family: $font-slab; font-size: 13px; padding-top: 8px; color: #fff;}
-.original-tweet > a { color: #fff; /*color: #839496;*/ font-weight: normal; text-decoration: none; border: none; }
+.original-tweet > a { color: #fff; /*color: $light-grey;*/ font-weight: normal; text-decoration: none; border: none; }
 .original-tweet > a:hover { color: #DC322F; }
 .tweet-username { color: rgb(131, 148, 150); white-space: nowrap; line-height: 1em; display: inline-block; padding-left: .5em; }
 .tweet-username > a { color: #fff; /*color: #657B83;*/ font-weight: bold; text-decoration: none; border: none; }
@@ -1496,7 +1497,7 @@ h2.twitterhdr > span {
 .copyright {
   margin-top: 60px;
   margin-bottom: 60px;
-  color: #fff;
+  color: $light-grey;
   font-size: 12px;
   line-height: 1.2em;
   /*font-family: "museo-slab", serif;*/
@@ -1539,7 +1540,7 @@ h2.twitterhdr > span {
 
 .footer ul li a {
     /*color: rgba(255, 255, 255, 0.7);*/
-    color: #839496;
+    color: $light-grey;
     font-size: 14px;
     text-decoration: none;
     border: none;
@@ -1914,11 +1915,11 @@ a.for-platform {
 }
 
 .left-side {
-  color: #839496;
+  color: $light-grey;
   z-index: 50;
   position: absolute;
   top: 42px;
-  left: 250px;
+  left: 0px;
   width: 170px;
   font-family: $font-slab;
   font-size: 12px;
@@ -1927,11 +1928,11 @@ a.for-platform {
 }
 
 .right-side {
-  color: #839496;
+  color: $light-grey;
   z-index: 50;
   position: absolute;
   top: 42px;
-  right: 250px;
+  right: 0px;
   width: 170px;
   font-family: $font-slab;
   font-size: 12px;
@@ -1940,7 +1941,7 @@ a.for-platform {
 }
 
 .left-side a, .right-side a, .where-to-learn-more a.italicize {
-  color: #839496;
+  color: $light-grey;
   font-weight: normal;
   font-style: italic;
   text-decoration: none;
