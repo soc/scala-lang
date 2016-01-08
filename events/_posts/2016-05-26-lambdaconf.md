@@ -2,7 +2,7 @@
 category: event
 title: LambdaConf 2016
 logo: /resources/img/lambdaconf.png
-location: Boulder, Colorado
+location: Boulder, Colorado, US
 description: "(Truly) Advanced Scala & Other Functional Programming"
 start: 26 May 2016
 end: 29 May 2016
