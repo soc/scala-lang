@@ -2,7 +2,7 @@
 ---
 
 function resizeAllSnippetBoxes() {
-  var snippetIds = ["#nutshell", "#platforms", "#tooling"];
+  var snippetIds = ["#nutshell", "#platforms", "#editors", "#tooling"];
   snippetIds.forEach(function(id) {resizeSnippetBoxesIn(id)});
 }
 
