@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: page
 title: Nested Methods
 
 disqus: true
