@@ -161,11 +161,11 @@ title: Overviews
 <div class="container">
   <div class="row">
     <div class="col-md-4 doc-block">
-      <h3><a href="collections/introduction/">Introduction to Collections</a></h3>
+      <h3><a href="collections/introduction">Introduction to Collections</a></h3>
       <p></p>
     </div>
     <div class="col-md-4 doc-block">
-      <h3><a href="collections/architecture/">Architecture of Collections</a></h3>
+      <h3><a href="collections/architecture">Architecture of Collections</a></h3>
       <p></p>
     </div>
     <div class="col-md-4 doc-block">
