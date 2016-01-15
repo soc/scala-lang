@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: page
 title: XML Processing
 
 disqus: true
