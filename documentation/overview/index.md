@@ -282,14 +282,8 @@ title: Overviews
 </div>
 
 <!--
-
     Introduction
-    Nested Methods
-    Currying
-    Compound Types
     Explicitly Typed Self References
     Views
     Local Type Inference
-    Annotations
-
 -->

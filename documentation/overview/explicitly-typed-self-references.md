@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: page
 title: Explicitly Typed Self References
 
 disqus: true
