@@ -257,6 +257,10 @@ title: Overviews
       <h3><a href="currying">Currying</a></h3>
       <p></p>
     </div>
+    <div class="col-md-4 doc-block">
+      <h3><a href="nested-methods">Nested Methods</a></h3>
+      <p></p>
+    </div>
   </div>
 </div>
 
