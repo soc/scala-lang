@@ -1,8 +1,6 @@
 ---
-layout: tutorial
+layout: page
 title: Annotations
-
-disqus: true
 
 tutorial: scala-tour
 num: 31
@@ -18,20 +16,16 @@ An annotation clause applies to the first definition or declaration following it
 
 The meaning of annotation clauses is _implementation-dependent_. On the Java platform, the following Scala annotations have a standard meaning.
 
-|           Scala           |           Java           |
-|           ------          |          ------          |
-|  [`scala.SerialVersionUID`](http://www.scala-lang.org/api/2.9.1/scala/SerialVersionUID.html)   |  [`serialVersionUID`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (field)  |
-|  [`scala.cloneable`](http://www.scala-lang.org/api/2.9.1/scala/cloneable.html)   |  [`java.lang.Cloneable`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Cloneable.html) |
-|  [`scala.deprecated`](http://www.scala-lang.org/api/2.9.1/scala/deprecated.html)   |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html) |
-|  [`scala.inline`](http://www.scala-lang.org/api/2.9.1/scala/inline.html) (since 2.6.0)  |  no equivalent |
-|  [`scala.native`](http://www.scala-lang.org/api/2.9.1/scala/native.html) (since 2.6.0)  |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.remote`](http://www.scala-lang.org/api/2.9.1/scala/remote.html) |  [`java.rmi.Remote`](http://java.sun.com/j2se/1.5.0/docs/api/java/rmi/Remote.html) |
-|  [`scala.serializable`](http://www.scala-lang.org/api/2.9.1/index.html#scala.annotation.serializable) |  [`java.io.Serializable`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html) |
-|  [`scala.throws`](http://www.scala-lang.org/api/2.9.1/scala/throws.html) |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.transient`](http://www.scala-lang.org/api/2.9.1/scala/transient.html) |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.unchecked`](http://www.scala-lang.org/api/2.9.1/scala/unchecked.html) (since 2.4.0) |  no equivalent |
-|  [`scala.volatile`](http://www.scala-lang.org/api/2.9.1/scala/volatile.html) |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword) |
-|  [`scala.reflect.BeanProperty`](http://www.scala-lang.org/api/2.9.1/scala/reflect/BeanProperty.html) |  [`Design pattern`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html) |
+|           Scala                                                                                    |           Java                                                                                                  |
+|           ------                                                                                   |          ------                                                                                                 |
+|  [`scala.SerialVersionUID`](http://www.scala-lang.org/api/current/scala/SerialVersionUID.html)     |  [`serialVersionUID`](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html#navbar_bottom) (field)  |
+|  [`scala.deprecated`](http://www.scala-lang.org/api/current/scala/deprecated.html)                 |  [`java.lang.Deprecated`](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Deprecated.html)                    |
+|  [`scala.native`](http://www.scala-lang.org/api/current/scala/native.html)                         |  [`native`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword)                 |
+|  [`scala.remote`](http://www.scala-lang.org/api/current/scala/remote.html)                         |  [`java.rmi.Remote`](http://java.sun.com/j2se/1.5.0/docs/api/java/rmi/Remote.html)                              |
+|  [`scala.throws`](http://www.scala-lang.org/api/current/scala/throws.html)                         |  [`throws`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword)                 |
+|  [`scala.transient`](http://www.scala-lang.org/api/current/scala/transient.html)                   |  [`transient`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword)              |
+|  [`scala.volatile`](http://www.scala-lang.org/api/current/scala/volatile.html)                     |  [`volatile`](http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html) (keyword)               |
+|  [`scala.beans.BeanProperty`](http://www.scala-lang.org/api/current/scala/beans/BeanProperty.html) |  [`Design pattern`](http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html)                   |
 
 In the following example we add the `throws` annotation to the definition of the method `read` in order to catch the thrown exception in the Java main program.
 
@@ -42,7 +36,7 @@ In the following example we add the `throws` annotation to the definition of the
     import java.io._
     class Reader(fname: String) {
       private val in = new BufferedReader(new FileReader(fname))
-      @throws(classOf[IOException])
+      @throws[IOException]
       def read() = in.read()
     }
 
@@ -74,9 +68,7 @@ Commenting out the `throws` annotation in the class Reader produces the followin
 
 ### Java Annotations ###
 
-**Note:** Make sure you use the `-target:jvm-1.5` option with Java annotations.
-
-Java 1.5 introduced user-defined metadata in the form of [annotations](http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html). A key feature of annotations is that they rely on specifying name-value pairs to initialize their elements. For instance, if we need an annotation to track the source of some class we might define it as
+Java 1.5 introduced user-defined metadata in the form of [annotations](http://docs.oracle.com/javase/tutorial/java/annotations/index.html). A key feature of annotations is that they rely on specifying name-value pairs to initialize their elements. For instance, if we need an annotation to track the source of some class we might define it as
 
     @interface Source {
       public String URL();
