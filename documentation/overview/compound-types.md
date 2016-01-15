@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: page
 title: Compound Types
 
 disqus: true

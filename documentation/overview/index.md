@@ -72,10 +72,6 @@ title: Overviews
       <p></p>
     </div>
     <div class="col-md-4 doc-block">
-      <h3><a href="abstract-types">Abstract Types</a></h3>
-      <p></p>
-    </div>
-    <div class="col-md-4 doc-block">
       <h3><a href="variance">Variance</a></h3>
       <p></p>
     </div>
@@ -91,6 +87,16 @@ title: Overviews
     </div>
     <div class="col-md-4 doc-block">
       <h3><a href="context-bounds">Context Bounds</a></h3>
+      <p></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 doc-block">
+      <h3><a href="abstract-types">Abstract Types</a></h3>
+      <p></p>
+    </div>
+    <div class="col-md-4 doc-block">
+      <h3><a href="compound-types">Compound Types</a></h3>
       <p></p>
     </div>
   </div>
