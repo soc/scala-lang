@@ -2,15 +2,16 @@
 layout: page
 title: Strings
 tutorial: scala-tour
+by: Karl Brodowsky
 ---
 
-# Introduction
+## Introduction
 
 Strings are used to express textual data.
 
 In a simplified approach Strings can be seen as sequences of characters.
 
-## Simple String literals
+### Simple String literals
 
 They can be written literally in source code using double quotes:
 
@@ -21,7 +22,7 @@ They can be written literally in source code using double quotes:
 
 The type `String` can be figured out by the Scala compiler, so it is optional to have the type specification `: String` as in the first two lines above.
 
-## Special Characters
+### Special Characters
 
 Some special characters can expressed in these string literals using sequences starting with `\`:
 
@@ -67,7 +68,7 @@ Lines in Strings used by Scala programs should usually be terminated by linefeed
 This is the way to write platform independent software.
 Conversion from <CR><LF> to <LF> and vice versa for reading and writing windows text files should be handled by the IO operations.
 
-## 16-Bit-Unicode Characters
+### 16-Bit-Unicode Characters
 
 Create Strings containing a 16-Bit-Unicode character of a given numeric code:
 
@@ -76,7 +77,7 @@ Create Strings containing a 16-Bit-Unicode character of a given numeric code:
 The numeric code has to be provided as 4 digit hex-number.
 Letters A..F may be used as upper case or lower case to express digits 10..15.
 
-## Alternative Way to express Strings
+### Alternative Way to express Strings
 
 Another way to express Strings is by enclosing them in triple quotes:
 
@@ -101,7 +102,7 @@ line 2
 line 3
 """
 
-## Empty String vs. `null`
+### Empty String vs. `null`
 
 Strings can have a length of zero characters, which is called "empty String".
 
@@ -114,7 +115,7 @@ This will be explained below in more detail.
 The memory setup of the enviroment that Scala is running and the memory consumption of the program can limit the space available for very long Strings.
 Highly memory consuming programs often fail due to the number and total size of the Strings that they are having in memory simultanously.
 
-# Strings and Unicode
+## Strings and Unicode
 
 [Unicode](https://en.wikipedia.org/wiki/Unicode) is used for all Strings in Scala.
 They are encoded in [UTF-16](https://en.wikipedia.org/wiki/UTF-16).
@@ -133,7 +134,7 @@ Since most strings in real world programs only contain string data comprised of 
 It is recommended to observe that Unicode code points above 0xFFFF might be needed in future versions of the software.
 It will be hard to rewrite the software if this is not observed already from the beginning.
 
-## Consistency of Strings with Unicode
+### Consistency of Strings with Unicode
 
 Scala allows Strings to consist of any sequence of 16-Bit code units and it is possible to create Strings containing a single code unit in the range 0xD800 to 0xDFFF, although they are only allowed to occur in pairs by the standard.
 So this is forbidded by the standard, but accepted by Scala:
@@ -144,7 +145,7 @@ So this is forbidded by the standard, but accepted by Scala:
 
 It is the responsibility of the application developer to make sure that only valid UTF-16 Strings are created literally or through software calculations.
 
-## Literal Strings and Unicode
+### Literal Strings and Unicode
 
 Scala supports code points above 0xFFFF only through specification of two adjacent `\u`-entries:
 
