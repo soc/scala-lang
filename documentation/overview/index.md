@@ -253,6 +253,10 @@ title: Overviews
       <h3><a href="infix-notation">Infix Notation</a></h3>
       <p></p>
     </div>
+    <div class="col-md-4 doc-block">
+      <h3><a href="currying">Currying</a></h3>
+      <p></p>
+    </div>
   </div>
 </div>
 

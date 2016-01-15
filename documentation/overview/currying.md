@@ -1,8 +1,6 @@
 ---
-layout: tutorial
+layout: page
 title: Currying
-
-disqus: true
 
 tutorial: scala-tour
 num: 9
