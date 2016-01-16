@@ -1,6 +1,8 @@
 ---
 ---
 
+"use strict";
+
 function resizeAllSnippetBoxes() {
   var snippetIds = ["#nutshell", "#platforms", "#editors", "#tooling"];
   snippetIds.forEach(function(id) {resizeSnippetBoxesIn(id)});
@@ -13,7 +15,7 @@ function resizeSnippetBoxesIn(id) {
   // same height hack for scala in a nutshell boxes
   function makeAllBoxesSameHeight(boxes) {
     boxes.map(function() { $(this).css('height', 'auto'); });
-    maxHeight = Math.max.apply(
+    var maxHeight = Math.max.apply(
       Math, boxes.map(function() {
           return $(this).height();
     }).get());
@@ -22,6 +24,44 @@ function resizeSnippetBoxesIn(id) {
   }
 
   makeAllBoxesSameHeight(snippets);
+}
+
+var expandedExplanation = undefined;
+// Figure out how the page is laid out so that we know where to place the div
+// with the expanded explanations. Find the last element which shares the
+// same vertical offset as the one the user clicked on.
+function findExpansionTarget(elem) {
+  if (expandedExplanation !== undefined)
+    expandedExplanation.remove();
+  var snippets = $("#nutshell .snippet-link");
+  var len = snippets.length;
+  var i = 0;
+  var snippet = undefined;
+  var elemFound = false;
+  while (i < len) {
+    var newSnippet = snippets.get(i);
+    if ($(snippet).is(elem)) {
+      elemFound = true;
+      console.log("elemFound!")
+    }
+    if (snippet !== undefined && elemFound && snippet.offsetTop !== newSnippet.offsetTop)
+      break;
+    snippet = newSnippet;
+    i += 1;
+  }
+  return snippet;
+}
+
+function showRequestedSnippet() {
+  var req = "#traits";
+  var snip = findExpansionTarget(req);
+  console.log(snip);
+  expandedExplanation =
+    $("#hidden-" + req.substring(1))
+      .removeClass("hidden-code-snippet")
+      .addClass("code-snippet");
+  expandedExplanation
+    .insertAfter(snip);
 }
 
 $(document).ready(function(){
@@ -137,6 +177,9 @@ $(document).ready(function(){
     $(".newsbox.left").height(sideboxHgt);
     $(".shadow").css('display','block');
   }
+
+  showRequestedSnippet();
 });
 
 $(window).resize(resizeAllSnippetBoxes);
+$(window).resize(showRequestedSnippet);
