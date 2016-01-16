@@ -1,14 +1,12 @@
 ---
-layout: overview
-label-color: success
+layout: page
 label-text: New in 2.10
 language: ja
+languages: [en, ja, zh-cn]
 overview: value-classes
 title: 値クラスと汎用トレイト
+by: Mark Harrah 著, Eugene Yokota 訳
 ---
-
-**Mark Harrah 著**<br>
-**Eugene Yokota 訳**
 
 ## はじめに
 

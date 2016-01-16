@@ -1,14 +1,12 @@
 ---
-layout: overview
-disqus: true
+layout: page
 language: zh-cn
-label-color: success
+languages: [en, ja, zh-cn]
 label-text: New in 2.10
 overview: value-classes
 title: Value Classes and Universal Traits
+by: Mark Harrah 著, Eugene Yokota 訳
 ---
-
-**Mark Harrah 著**
 
 ## 引言
 

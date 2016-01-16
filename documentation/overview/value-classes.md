@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Value Classes
+title: Value Classes and Universal Traits
 label-text: New in 2.10
 overview: value-classes
 languages: [en, ja, zh-cn]
@@ -41,7 +41,7 @@ The remaining sections of this documentation show use cases, details on when all
 
 ## Extension methods
 
-One use case for value classes is to combine them with implicit classes ([SIP-13](http://docs.scala-lang.org/sips/pending/implicit-classes.html)) for allocation-free extension methods.  Using an implicit class provides a more convenient syntax for defining extension methods, while value classes remove the runtime overhead. A good example is the `RichInt` class in the standard library.  `RichInt` extends the `Int` type with several methods.  Because it is a value class, an instance of `RichInt` doesn't need to be created when using `RichInt` methods.
+One use case for value classes is to combine them with [implicit classes](implicit-classes) for allocation-free extension methods.  Using an implicit class provides a more convenient syntax for defining extension methods, while value classes remove the runtime overhead. A good example is the `RichInt` class in the standard library.  `RichInt` extends the `Int` type with several methods.  Because it is a value class, an instance of `RichInt` doesn't need to be created when using `RichInt` methods.
 
 The following fragment of `RichInt` shows how it extends `Int` to allow the expression `3.toHexString`:
 
