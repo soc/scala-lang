@@ -7,20 +7,9 @@ languages: [en, ja, zh-cn]
 by: Martin Odersky and Lex Spoon
 ---
 
-In the eyes of many, the new collections framework is the most significant
-change in the Scala 2.8 release. Scala had collections before (and in fact the new
-framework is largely compatible with them). But it's only 2.8 that
-provides a common, uniform, and all-encompassing framework for
-collection types.
-
-Even though the additions to collections are subtle at first glance,
-the changes they can provoke in your programming style can be
-profound.  In fact, quite often it's as if you work on a higher-level
-with the basic building blocks of a program being whole collections
-instead of their elements. This new style of programming requires some
-adaptation. Fortunately, the adaptation is helped by several nice
-properties of the new Scala collections. They are easy to use,
-concise, safe, fast, universal.
+Scala's standard library provides a common, uniform, and
+all-encompassing framework for collection types.
+They are easy to use, concise, safe, fast, universal.
 
 **Easy to use:** A small vocabulary of 20-50 methods is
 enough to solve most collection problems in a couple of operations. No
