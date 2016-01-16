@@ -906,6 +906,7 @@ extending classes, then implicit parameters are a way of extending methods,
 creating simple, reliable shorthands for complex generic methods, and
 making up another piece of the Scala DSL jigsaw.
 
+<!--
 ## Compatibility
 
 ### Within Scala
@@ -935,3 +936,4 @@ making up another piece of the Scala DSL jigsaw.
 ## Deployment
 
 **TODO**
+-->
