@@ -16,6 +16,7 @@ $medium-blue:   #174753;
 $light-blue:    #418EA1; /*#418EA1; #41B4A1; #98C38A,#72D0EB;*/
 $green:         #859900; /*#F6E27F; #eec643; #859900;*/
 $light-grey:    #839496;
+$medium-grey:   #586E75;
 $dark-grey:     #3D626B;
 
 /* start override Bootstrap */
@@ -882,6 +883,13 @@ h2.twitterhdr > span {
   color: #FFF;
 }
 
+.code-snippet {
+  background-color: rgba(41, 75, 83, 0.5);
+  padding-top: 15px;
+  border-radius: 10px;
+
+}
+
 .code-snippet-box {
   width: 100%;
   min-width:1024px;
@@ -908,15 +916,6 @@ h2.twitterhdr > span {
   border-right: 20px solid transparent;
   border-top: 20px solid #17404A;
 }
-
-#code-snippet-row1 > .container > .row,
-#code-snippet-row2 > .container > .row {
-  padding-top: 32px;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-bottom: 20px;
-}
-
 
 .hidden-code-snippet {
   display: none;
@@ -2285,6 +2284,7 @@ div#toc ul > li + ul > li { margin-top: 12px; }
 }
 
 .snippet-explanation > p {
+  color: $light-grey;
   margin-bottom: 18px;
 }
 

@@ -4,18 +4,18 @@
 "use strict";
 
 function resizeAllSnippetBoxes() {
-  var snippetIds = ["#nutshell", "#platforms", "#editors", "#tooling"];
+  const snippetIds = ["#nutshell", "#platforms", "#editors", "#tooling"];
   snippetIds.forEach(function(id) {resizeSnippetBoxesIn(id)});
 }
 
 function resizeSnippetBoxesIn(id) {
   // Exclude the heading
-  var snippets = $(id + " .bullet-point").not(".col-md-12");
+  const snippets = $(id + " .bullet-point").not(".col-md-12");
 
   // same height hack for scala in a nutshell boxes
   function makeAllBoxesSameHeight(boxes) {
     boxes.map(function() { $(this).css('height', 'auto'); });
-    var maxHeight = Math.max.apply(
+    const maxHeight = Math.max.apply(
       Math, boxes.map(function() {
           return $(this).height();
     }).get());
@@ -26,20 +26,21 @@ function resizeSnippetBoxesIn(id) {
   makeAllBoxesSameHeight(snippets);
 }
 
-var expandedExplanation = undefined;
+let requestedSnippet = undefined;
+let expandedExplanation = undefined;
 // Figure out how the page is laid out so that we know where to place the div
 // with the expanded explanations. Find the last element which shares the
 // same vertical offset as the one the user clicked on.
 function findExpansionTarget(elem) {
   if (expandedExplanation !== undefined)
     expandedExplanation.remove();
-  var snippets = $("#nutshell .snippet-link");
-  var len = snippets.length;
-  var i = 0;
-  var snippet = undefined;
-  var elemFound = false;
+  const snippets = $("#nutshell .snippet-link");
+  const len = snippets.length;
+  let i = 0;
+  let snippet = undefined;
+  let elemFound = false;
   while (i < len) {
-    var newSnippet = snippets.get(i);
+    let newSnippet = snippets.get(i);
     if ($(snippet).is(elem)) {
       elemFound = true;
       console.log("elemFound!")
@@ -52,16 +53,22 @@ function findExpansionTarget(elem) {
   return snippet;
 }
 
-function showRequestedSnippet() {
-  var req = "#traits";
-  var snip = findExpansionTarget(req);
+function showRequestedSnippet(requested) {
+  let req = undefined;
+  if (requested !== undefined) {
+    if (requested === requestedSnippet) return;
+    requestedSnippet = requested;
+  }
+  req = requestedSnippet;
+  if (req === undefined) return;
+  const snip = findExpansionTarget(req);
   console.log(snip);
   expandedExplanation =
     $("#hidden-" + req.substring(1))
-      .removeClass("hidden-code-snippet")
+      .clone(true)
       .addClass("code-snippet");
   expandedExplanation
-    .insertAfter(snip);
+    .insertAfter(snip).slideDown();
 }
 
 $(document).ready(function(){
@@ -69,33 +76,31 @@ $(document).ready(function(){
   $(".splash").backstretch("{{ site.baseurl }}/resources/img/view-leman-opt2.jpg");
 
   // tooltips (front page)
-  $(".marker").mouseover(function(){ $("#tip").show(); });
-  $(".marker").mouseout(function(){ $("#tip").hide(); });
+  $(".marker").mouseover(() => $("#tip").show());
+  $(".marker").mouseout(() => $("#tip").hide());
 
-  $("#source-code").mouseover(function(){ $(this).find(".toptip").show(); });
-  $("#source-code").mouseout(function(){ $(this).find(".toptip").hide(); });
-  $("#scala-lang-twitter").mouseover(function(){ $(this).find(".toptip").show(); });
-  $("#scala-lang-twitter").mouseout(function(){ $(this).find(".toptip").hide(); });
+  $("#source-code").mouseover(() => $(this).find(".toptip").show());
+  $("#source-code").mouseout(() => $(this).find(".toptip").hide());
 
   // get current year and put it in span
-  var currYear = new Date().getFullYear()
-  $(".current-year").text(currYear);
+  $(".current-year").text(new Date().getFullYear());
 
   resizeAllSnippetBoxes();
 
   // expanding code snippets (front page)
-  function expandSnippetAction(snippetID, container) {
-    var codeBox = container.find(".row");
+  function expandSnippetAction(snippetID) {
+    const codeBox = findExpansionTarget(snippetID);
+    console.log(codeBox);
 
     function go() {
-      var snippet = $(snippetID).html();
+      const snippet = $(snippetID).html();
 
       // for positioning the arrow
-      var arrow = $(this).parent().siblings(".code-snippet-arrow");
-      var centerPoint = $(this).position().left + $(this).width()/2;
+      const arrow = $(this).parent().siblings(".code-snippet-arrow");
+      const centerPoint = $(this).position().left + $(this).width()/2;
       arrow.css("left", centerPoint);
 
-      var codeSnippetInContainer = codeBox.html();
+      const codeSnippetInContainer = codeBox.html();
 
       if (container.is(":hidden")) {
         arrow.show();
@@ -103,11 +108,9 @@ $(document).ready(function(){
         codeBox.html(snippet);
         container.slideDown();
       } else if (codeSnippetInContainer == snippet) {
-        container.slideUp(function() {
-          arrow.hide();
-        });
+        container.slideUp(() => arrow.hide());
       } else {
-        var hgt = $(snippetID).height();
+        const hgt = $(snippetID).height();
         arrow.addClass("hover");
         codeBox.html(snippet);
         codeBox.animate({height: hgt}, 400);
@@ -116,70 +119,19 @@ $(document).ready(function(){
     return go;
   }
 
-  var row1 = $("#code-snippet-row1");
-  var row2 = $("#code-snippet-row2");
-  var row3 = $("#code-snippet-row3");
-//var row4 = $("#code-snippet-row4");
-  var row5 = $("#code-snippet-row5");
-  var row6 = $("#code-snippet-row6");
-  var row7 = $("#code-snippet-row7");
-
-  $("#java-interop").click(expandSnippetAction("#hidden-java-interop", row1));
-  $("#type-inference").click(expandSnippetAction("#hidden-type-inference", row1));
-  $("#concurrency-distribution").click(expandSnippetAction("#hidden-concurrency-distribution", row1));
-
-  $("#traits").click(expandSnippetAction("#hidden-traits", row2));
-  $("#pattern-matching").click(expandSnippetAction("#hidden-pattern-matching", row2));
-  $("#higher-order-functions").click(expandSnippetAction("#hidden-higher-order-functions", row2));
-
-/*
-  $("#jvm").click(expandSnippetAction("#hidden-jvm", row4));
-  $("#browser").click(expandSnippetAction("#hidden-browser", row4));
-  $("#android").click(expandSnippetAction("#hidden-android", row4));
-*/
-
-  // arrow color hack for hover-overs
-  function arrowMouseover(snippetID, container) {
-
-    function go() {
-      var codeSnippetInContainer = container.find(".row").html();
-      var snippet = $(snippetID).html();
-      if (codeSnippetInContainer == snippet) {
-        var arrow = $(this).parent().siblings(".code-snippet-arrow");
-        arrow.addClass("hover");
-      }
-    }
-    return go;
-  }
-  function arrowMouseout() {
-    var arrow = $(this).parent().siblings(".code-snippet-arrow");
-    arrow.removeClass("hover");
-  }
-
-  $("#java-interop").hover(arrowMouseover("#hidden-java-interop", row1), arrowMouseout);
-  $("#type-inference").hover(arrowMouseover("#hidden-type-inference", row1), arrowMouseout);
-  $("#concurrency-distribution").hover(arrowMouseover("#hidden-concurrency-distribution", row1), arrowMouseout);
-
-  $("#traits").hover(arrowMouseover("#hidden-traits", row2), arrowMouseout);
-  $("#pattern-matching").hover(arrowMouseover("#hidden-pattern-matching", row2), arrowMouseout);
-  $("#higher-order-functions").hover(arrowMouseover("#hidden-higher-order-functions", row2), arrowMouseout);
-
-/*
-  $("#jvm").hover(arrowMouseover("#hidden-jvm", row4), arrowMouseout);
-  $("#browser").hover(arrowMouseover("#hidden-browser", row4), arrowMouseout);
-  $("#android").hover(arrowMouseover("#hidden-android", row4), arrowMouseout);
-*/
+  ["#java-interop", "#type-inference", "#concurrency-distribution", "#traits", "#pattern-matching", "#higher-order-functions"]
+    .forEach(it => $(it).click(()=> showRequestedSnippet(it)));
 
   // truncate main visible news item if it exceeds height of sidebar
-  var sideboxHgt = $(".recent-news-items").height();
-  var mainboxHgt = $(".newsbox.left").height();
+  const sideboxHgt = $(".recent-news-items").height();
+  const mainboxHgt = $(".newsbox.left").height();
   if (sideboxHgt < mainboxHgt) {
     $(".newsbox.left").height(sideboxHgt);
     $(".shadow").css('display','block');
   }
 
-  showRequestedSnippet();
+  //showRequestedSnippet();
 });
 
 $(window).resize(resizeAllSnippetBoxes);
-$(window).resize(showRequestedSnippet);
+$(window).resize(() => showRequestedSnippet());
