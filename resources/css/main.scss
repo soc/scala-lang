@@ -22,6 +22,12 @@ $white:         #FFFFFF;
 
 /* start override Bootstrap */
 
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+}
+
 @media (max-width: 670px) {
   .darkbluetopbar > .container > .navbar-wrap > .container > .scala-logo {
     overflow: hidden;
@@ -30,8 +36,13 @@ $white:         #FFFFFF;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  padding-top: 0.75rem;
   font-weight: 700;
   text-rendering: optimizelegibility;
+}
+
+.h4 {
+  font-size: 1rem !important;
 }
 
 * {
@@ -141,7 +152,6 @@ a:hover {
 }
 
 .navbar-wrap {
-  float: right;
   position: relative;
   height: 100%;
 }
@@ -989,6 +999,12 @@ h2.twitterhdr > span {
   background: $medium-blue;
 }
 
+a.platform-link {
+  border-bottom: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 #editors,
 #editors .bullet-point > h2 > span,
 #editors .bullet-point.col-md-12:hover {
@@ -1491,11 +1507,10 @@ h2.twitterhdr > span {
   text-decoration: none;
 }
 
-.footer {
+footer {
   position: relative;
   z-index: 10;
   background: $dark-blue;
-  /*text-align: center;*/
   color: #fff;
   padding-top: 20px;
 }
@@ -1511,12 +1526,12 @@ h2.twitterhdr > span {
   float: left;
 }
 
-.footer > p {
+footer > p {
   vertical-align: bottom;
 }
 
-.footer ul {
-  -moz-box-sizing: content-box;
+footer ul {
+  box-sizing: content-box;
   float: left;
   list-style: none outside none;
   margin: 0;
@@ -1524,27 +1539,27 @@ h2.twitterhdr > span {
   width: 188px;
 }
 
-.footer a {
+footer a {
   color: #fff;
   font-size: 12px;
   text-decoration: none;
   border: none;
 }
 
-.footer a:hover {
+footer a:hover {
   color: #DC352E;
   text-decoration: none;
 }
 
-.footer li {
+footer li {
   text-align: left;
 }
 
-.footer ul:last-child {
+footer ul:last-child {
     padding-right: 0;
 }
 
-.footer ul li a {
+footer ul li a {
     /*color: rgba(255, 255, 255, 0.7);*/
     color: $light-grey;
     font-size: 14px;
@@ -1552,11 +1567,11 @@ h2.twitterhdr > span {
     border: none;
 }
 
-.footer ul li a:hover {
+footer ul li a:hover {
     text-decoration: none;
 }
 
-.footer ul li h5 {
+footer ul li h5 {
     /*border-bottom: 1px solid rgba(131, 148, 150, 0.6);*/
     /*color: rgba(255, 255, 255, 0.9);*/
     font-family: $font-body;
@@ -1568,7 +1583,7 @@ h2.twitterhdr > span {
     /*text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);*/
     text-transform: uppercase;
 }
-.footer ul li h5 a {
+footer ul li h5 a {
     font-size: 14px;
     opacity: 1;
     border: none;
@@ -2220,10 +2235,8 @@ code {
 }
 
 #page-title {
-  margin-top: 16px;
   font-family: $font-geometric;
   font-size: 32px;
-  line-height: 24px;
   color: #fff;
   text-transform: uppercase;
   text-shadow: 1px 1px 0px rgba(0, 43, 54, 0.15);
