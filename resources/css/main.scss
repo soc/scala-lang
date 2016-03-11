@@ -18,6 +18,7 @@ $green:         #859900; /*#F6E27F; #eec643; #859900;*/
 $light-grey:    #839496;
 $medium-grey:   #586E75;
 $dark-grey:     #3D626B;
+$white:         #FFFFFF;
 
 /* start override Bootstrap */
 
@@ -887,7 +888,7 @@ h2.twitterhdr > span {
   background-color: rgba(41, 75, 83, 0.5);
   padding-top: 15px;
   border-radius: 10px;
-
+  margin-left: -15px;
 }
 
 .code-snippet-box {
@@ -956,6 +957,11 @@ h2.twitterhdr > span {
   padding-bottom: 20px;
 }
 
+.bullet-point.bullet-point-active {
+  background: rgba(41, 75, 83, 0.5);
+  border-radius: 5px 5px 0 0;
+}
+
 @media (min-width:1024px) {
   .events,
   .training {
@@ -969,6 +975,7 @@ h2.twitterhdr > span {
   height: 100%;
   padding-left: 0px;
   padding-right: 0px;
+  border-radius: 5px;
 }
 
 #nutshell .bullet-point > h2 > span,
@@ -2261,8 +2268,12 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   margin-bottom: 10px;
 }
 
-.traits, .concurrency, .java-interop-wrapper, .type-inference {
+.traits, .concurrency, .java-interop-wrapper, .expressive {
   float: left;
+}
+
+.hidden-explanation-box {
+  display: none;
 }
 
 .snippet-explanation {
@@ -2280,11 +2291,16 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   /*margin: 0 15px 15px;*/
   /*font-size: 13pt;*/
   /*line-height: 17pt;*/
-  color: #fff;
+  color: $white;
 }
 
-.snippet-explanation > p {
+#nutshell .snippet-explanation > p {
   color: $light-grey;
+  margin-bottom: 18px;
+}
+
+#editors .snippet-explanation > p {
+  color: $white;
   margin-bottom: 18px;
 }
 

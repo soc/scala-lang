@@ -1,4 +1,4 @@
-<figure class="code type-inference" style="width: 450px; margin-top: 20px;">
+<figure class="code expressive" style="width: 500px; margin-top: 20px;">
   <figcaption>Type inference</figcaption>
   <pre><code>scala> class Person(val name: String, val age: Int) {
      |   override def toString = s"$name ($age)"
@@ -12,7 +12,7 @@ underagePeopleNames: (persons: List[Person])List[String]
 
 scala> def createRandomPeople() = {
      |   val names = List("Alice", "Bob", "Carol",
-     |       "Dave", "Eve", "Frank")
+     |                    "Dave", "Eve", "Frank")
      |   for (name &lt;- names) yield {
      |     val age = (Random.nextGaussian()*8 + 20).toInt
      |     new Person(name, age)
@@ -21,7 +21,8 @@ scala> def createRandomPeople() = {
 createRandomPeople: ()List[Person]
 
 scala> val people = createRandomPeople()
-people: List[Person] = List(Alice (16), Bob (16), Carol (19), Dave (18), Eve (26), Frank (11))
+people: List[Person] = List(Alice (16), Bob (16), Carol (19),
+                            Dave (18), Eve (26), Frank (11))
 
 scala> underagePeopleNames(people)
 res1: List[String] = List(Alice, Bob, Frank)</code></pre>
