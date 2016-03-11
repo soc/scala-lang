@@ -124,177 +124,176 @@ $(document).ready(function(){
 
   (function() {
 
-  // Stop early if the element does not exist, i.e., we're not on the front page
-  if ($('#eventspane').length == 0)
-    return;
-  var isFrontPage = $('#events').length != 0;
-  var additionalClass =
-    isFrontPage ? 'event-item-front-page' : 'event-item-event-page';
+    // Stop early if the element does not exist, i.e., we're not on the front page
+    if ($('#eventspane').length == 0)
+      return;
+    var isFrontPage = $('#events').length != 0;
+    var additionalClass =
+      isFrontPage ? 'event-item-front-page' : 'event-item-event-page';
 
-  var MAX_EVENTS = isFrontPage ? 5 : 30;
+    var MAX_EVENTS = isFrontPage ? 5 : 30;
 
-  function compareEventsByDate(lhs, rhs) {
-    return compareFormattedDates(lhs.start, rhs.start);
-  }
-
-  var scalaLangEvents = [
-  {% for event in site.categories.events %}
-  {% if event.date >= site.time %}{% comment %} No point in including outdated events {% endcomment %}
-    {
-      "title": "{{ event.title }}",
-      "logo": "{{ event.logo }}",
-      "location": "{{ event.location }}",
-      "start": "{{ event.start }}",
-      "end": "{{ event.end }}",
-      "url": "{{ event.link-out }}",
-    },
-  {% endif %}
-  {% endfor%}
-  ];
-
-  function doPopulateEventsPane(allEvents) {
-    var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-    allEvents = allEvents.filter(function (event) {
-      return (event.end ? new Date(event.end) : new Date(event.start)) >= new Date();
-    });
-    allEvents.sort(compareEventsByDate);
-    var content = "";
-    for (i = 0; i < allEvents.length && i < MAX_EVENTS; i++) {
-      var event = allEvents[i];
-
-      var eventStart = new Date(event.start);
-      var startMonth = monthNames[eventStart.getMonth()];
-      var startDay   = eventStart.getDate();
-      var year       = eventStart.getFullYear();
-      var prefix     = startMonth + ' ' + startDay
-      var date       = prefix + ' ' + year;
-
-      if (event.end) {
-        var eventEnd = new Date(event.end);
-        var endMonth = monthNames[eventEnd.getMonth()];
-        var endDay =  eventEnd.getDate();
-        if (startMonth == endMonth && startDay != endDay) {
-          date = prefix + '-' + endDay + ' ' + year;
-        } else if (startMonth == endMonth && startDay == endDay) {
-          date = prefix + ' ' + year;
-        } else {
-          date = prefix + ' - ' + endMonth + ' ' + endDay + ' ' + year;
-        }
-      }
-      var thisContent =
-        '<a href="'+event.url+'">' +
-        '<div class="event-item-wrap '+additionalClass+'">' +
-          '<div class="event-item">' +
-            '<div class="event-title">'+event.title+'</div>' +
-            '<div class="event-logo"><img class="event-logo" src="'+event.logo+'" alt="Logo" /></div>' +
-            '<div class="event-float-right">' +
-              '<div class="event-location">'+event.location+'</div>' +
-              '<div class="event-date">'+ date + '</div>' +
-              '</div>' +
-          '</div>' +
-        '</div>' +
-        '</a>';
-      $("#eventspane").append(thisContent);
+    function compareEventsByDate(lhs, rhs) {
+      return compareFormattedDates(lhs.start, rhs.start);
     }
-  };
 
-  doPopulateEventsPane(scalaLangEvents);
+    var scalaLangEvents = [
+    {% for event in site.categories.events %}
+      {
+        "title": "{{ event.title }}",
+        "logo": "{{ event.logo }}",
+        "location": "{{ event.location }}",
+        "start": "{{ event.start }}",
+        "end": "{{ event.end }}",
+        "url": "{{ event.link-out }}",
+      },
+    {% endfor%}
+    ];
 
-  })();
+    function doPopulateEventsPane(allEvents) {
+      console.log("doPopulateEventsPane");
+      var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+      allEvents = allEvents.filter(function (event) {
+        return (event.end ? new Date(event.end) : new Date(event.start)) >= new Date();
+      });
+      allEvents.sort(compareEventsByDate);
+      var content = "";
+      for (i = 0; i < allEvents.length && i < MAX_EVENTS; i++) {
+        var event = allEvents[i];
 
-  // TRAININGS
+        var eventStart = new Date(event.start);
+        var startMonth = monthNames[eventStart.getMonth()];
+        var startDay   = eventStart.getDate();
+        var year       = eventStart.getFullYear();
+        var prefix     = startMonth + ' ' + startDay
+        var date       = prefix + ' ' + year;
 
-  (function() {
-
-  // Stop early if the element does not exist, i.e.,
-  // we're not on the front page nor on the Trainings page
-  if ($('#trainingspane').length == 0)
-    return;
-  var isFrontPage = $('.training').length != 0;
-  var additionalClass =
-    isFrontPage ? 'training-item-front-page' : 'traning-item-training-page';
-
-  var MAX_TRAININGS = isFrontPage ? 5 : 15;
-
-  function compareTrainingsByDate(lhs, rhs) {
-    return compareFormattedDates(lhs.when, rhs.when);
-  }
-
-  var scalaLangTrainings = [
-  {% for training in site.categories.training %}
-  {% if training.date >= site.time %}{% comment %} No point in including outdated training sessions {% endcomment %}
-    {
-      title: "{{ training.title }}",
-      description: "{{ training.description }}",
-      url: "{{ training.link-out }}",
-      sessions: [
-        {
-          where: "{{ training.where }}",
-          when: "{{ training.when }}",
-          trainers: "{{ training.trainers }}",
-          organizer: "{{ training.organizer }}",
-          status: "{{ training.status }}"
+        if (event.end) {
+          var eventEnd = new Date(event.end);
+          var endMonth = monthNames[eventEnd.getMonth()];
+          var endDay =  eventEnd.getDate();
+          if (startMonth == endMonth && startDay != endDay) {
+            date = prefix + '-' + endDay + ' ' + year;
+          } else if (startMonth == endMonth && startDay == endDay) {
+            date = prefix + ' ' + year;
+          } else {
+            date = prefix + ' - ' + endMonth + ' ' + endDay + ' ' + year;
+          }
         }
-      ]
-    },
-  {% endif %}
-  {% endfor%}
-  ];
-
-  function flattenSessions(trainings) {
-    var result = new Array();
-    for (i = 0; i < trainings.length; i++) {
-      var training = trainings[i];
-      for (j = 0; j < training.sessions.length; j++) {
-        var session = training.sessions[j];
-        result.push({
-          title: training.title,
-          description: training.description,
-          url: session.url,
-          where: session.where,
-          when: session.when,
-          trainers: session.trainers,
-          organizer: session.organizer,
-          status: session.status
-        });
-      }
-    }
-    return result;
-  }
-
-  function doPopulateTrainingsPane(allTrainings0) {
-    var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-    var allTrainings = flattenSessions(allTrainings0);
-    allTrainings = allTrainings.filter(function (training) {
-      return new Date(training.when) >= new Date();
-    });
-    allTrainings.sort(compareTrainingsByDate);
-    var content = "";
-    for (i = 0; i < allTrainings.length && i < MAX_TRAININGS; i++) {
-      var training = allTrainings[i];
-      var trainingDate = new Date(training.when);
-      var month = monthNames[trainingDate.getMonth()];
-      var day = trainingDate.getDate();
-      var year = trainingDate.getFullYear();
-      var thisContent =
-        '<div class="training-item-wrap '+additionalClass+'" onclick="window.location=\''+training.url+'\'">' +
-          '<div class="training-item">' +
-            '<div class="training-title"><a href="'+training.url+'">'+training.title+'</a></div>' +
-            '<div class="training-date">' +
-               '<div class="date"><div class="month">'+month+'</div><div class="day">'+day+'</div></div><div class="year">'+year+'</div>' +
-            '</div>'+
-            '<div class="training-float-right">' +
-              '<div class="training-location">'+training.where+'</div>' +
-              (training.trainers == null ? '' : ('<div class="training-trainers-name"> By '+training.trainers+'</div>')) +
-              '<div class="training-organizer">'+training.organizer+'</div>' +
+        var thisContent =
+          '<a href="'+event.url+'">' +
+          '<div class="event-item-wrap '+additionalClass+'">' +
+            '<div class="event-item">' +
+              '<div class="event-title">'+event.title+'</div>' +
+              '<div class="event-logo"><img class="event-logo" src="'+event.logo+'" alt="Logo" /></div>' +
+              '<div class="event-float-right">' +
+                '<div class="event-location">'+event.location+'</div>' +
+                '<div class="event-date">'+ date + '</div>' +
+                '</div>' +
             '</div>' +
           '</div>' +
-        '</div>';
-      $("#trainingspane").append(thisContent);
-    }
-  }
+          '</a>';
+        $("#eventspane").append(thisContent);
+      }
+    };
 
-  doPopulateTrainingsPane(scalaLangTrainings);
+    doPopulateEventsPane(scalaLangEvents);
+
+    })();
+
+    // TRAININGS
+
+    (function() {
+
+    // Stop early if the element does not exist, i.e.,
+    // we're not on the front page nor on the Trainings page
+    if ($('#trainingspane').length == 0)
+      return;
+    var isFrontPage = $('.training').length != 0;
+    var additionalClass =
+      isFrontPage ? 'training-item-front-page' : 'traning-item-training-page';
+
+    var MAX_TRAININGS = isFrontPage ? 5 : 15;
+
+    function compareTrainingsByDate(lhs, rhs) {
+      return compareFormattedDates(lhs.when, rhs.when);
+    }
+
+    var scalaLangTrainings = [
+    {% for training in site.categories.training %}
+    {% if training.date >= site.time %}{% comment %} No point in including outdated training sessions {% endcomment %}
+      {
+        title: "{{ training.title }}",
+        description: "{{ training.description }}",
+        url: "{{ training.link-out }}",
+        sessions: [
+          {
+            where: "{{ training.where }}",
+            when: "{{ training.when }}",
+            trainers: "{{ training.trainers }}",
+            organizer: "{{ training.organizer }}",
+            status: "{{ training.status }}"
+          }
+        ]
+      },
+    {% endif %}
+    {% endfor%}
+    ];
+
+    function flattenSessions(trainings) {
+      var result = new Array();
+      for (i = 0; i < trainings.length; i++) {
+        var training = trainings[i];
+        for (j = 0; j < training.sessions.length; j++) {
+          var session = training.sessions[j];
+          result.push({
+            title: training.title,
+            description: training.description,
+            url: session.url,
+            where: session.where,
+            when: session.when,
+            trainers: session.trainers,
+            organizer: session.organizer,
+            status: session.status
+          });
+        }
+      }
+      return result;
+    }
+
+    function doPopulateTrainingsPane(allTrainings0) {
+      var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+      var allTrainings = flattenSessions(allTrainings0);
+      allTrainings = allTrainings.filter(function (training) {
+        return new Date(training.when) >= new Date();
+      });
+      allTrainings.sort(compareTrainingsByDate);
+      var content = "";
+      for (i = 0; i < allTrainings.length && i < MAX_TRAININGS; i++) {
+        var training = allTrainings[i];
+        var trainingDate = new Date(training.when);
+        var month = monthNames[trainingDate.getMonth()];
+        var day = trainingDate.getDate();
+        var year = trainingDate.getFullYear();
+        var thisContent =
+          '<div class="training-item-wrap '+additionalClass+'" onclick="window.location=\''+training.url+'\'">' +
+            '<div class="training-item">' +
+              '<div class="training-title"><a href="'+training.url+'">'+training.title+'</a></div>' +
+              '<div class="training-date">' +
+                 '<div class="date"><div class="month">'+month+'</div><div class="day">'+day+'</div></div><div class="year">'+year+'</div>' +
+              '</div>'+
+              '<div class="training-float-right">' +
+                '<div class="training-location">'+training.where+'</div>' +
+                (training.trainers == null ? '' : ('<div class="training-trainers-name"> By '+training.trainers+'</div>')) +
+                '<div class="training-organizer">'+training.organizer+'</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        $("#trainingspane").append(thisContent);
+      }
+    }
+
+    doPopulateTrainingsPane(scalaLangTrainings);
 
   })();
 
