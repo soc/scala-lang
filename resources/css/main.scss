@@ -258,6 +258,29 @@ a.brand {
   margin-top: -36px;
 }
 
+.download-button {
+  display: block;
+  position: relative;
+  text-align: center;
+  width: 250px;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  background-color: #dc322f;
+  color: white;
+  border-radius: 25px;
+  white-space: nowrap;
+  color: $white;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 15px auto 15px;
+}
+a.download-button {
+  color: $white;
+  transition: none;
+  border: none;
+}
+
 #download-button {
   display: block;
   position: relative;
@@ -273,6 +296,7 @@ a.brand {
   font-weight: 700;
   margin: 30px auto 0px;
 }
+
 #download-button span {
   display: inline-block;
   position: relative;

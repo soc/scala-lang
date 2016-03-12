@@ -82,8 +82,8 @@
             var topOfSidebar = $(".sidebar").offset().top;
             var sidebarInner = $(".sidebar-inner");
             var bottomOfSidebarInner = $(".sidebar-inner").offset().top + $(".sidebar-inner").outerHeight();
-            var topOfFooter = $(".footer").offset().top - 10;
-            var footerHeight = $(".footer").outerHeight();
+            var topOfFooter = $("footer").offset().top - 10;
+            var footerHeight = $("footer").outerHeight();
             if (topOfScroll > topOfSidebar) {
               if (bottomOfSidebarInner > topOfFooter) {
                 sidebarInner.css({position:"fixed",bottom:footerHeight,top:""});
