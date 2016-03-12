@@ -335,18 +335,10 @@ a.download-button {
   vertical-align: -7px;
 }
 #download-button:hover span {
-  -webkit-transform: translateX(0);
-     -moz-transform: translateX(0);
-      -ms-transform: translateX(0);
-       -o-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
 }
 #download-button:hover.activator span {
-  -webkit-transform: translateX(24px);
-     -moz-transform: translateX(24px);
-      -ms-transform: translateX(24px);
-       -o-transform: translateX(24px);
-          transform: translateX(24px);
+  transform: translateX(24px);
 }
 
 /* Ideally, we would have only this:
@@ -1095,12 +1087,12 @@ a.platform-link {
   border-width: 0 34px;
   height: 32px;
   display: inline-block;
-  line-height: 35px;
   padding: 0 10px;
 }
 
 .bullet-point > p.click {
   padding: 0px;
+  margin-top: -10px;
   color: #17404A;
   font-family: $font-slab;
   font-size: 12px;
