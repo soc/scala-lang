@@ -66,11 +66,7 @@ code, kbd, pre, samp {
 }
 
 *, *:after, *:before {
--webkit-font-smoothing: antialiased;
--moz-font-smoothing: antialiased;
--o-font-smoothing: antialiased;
-font-smoothing: antialiased;
-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
 }
 
 html, body {
@@ -89,10 +85,6 @@ body {
 
 a:link, a:visited {
   color: #27B3D9;
-  -webkit-transition: color .1s ease-in;
-  -moz-transition: color .1s ease-in;
-  -ms-transition: color .1s ease-in;
-  -o-transition: color .1s ease-in;
   transition: color .1s ease-in;
   border-bottom: 2px solid #F2F5F8;
 }
@@ -100,10 +92,6 @@ a:link, a:visited {
 a:hover {
   color: #DC322F;
   text-decoration: none;
-  -webkit-transition: color .1s ease-in;
-  -moz-transition: color .1s ease-in;
-  -ms-transition: color .1s ease-in;
-  -o-transition: color .1s ease-in;
   transition: color .1s ease-in;
 }
 
@@ -304,16 +292,8 @@ a.download-button {
   height: inherit;
   vertical-align: 6px;
   text-align: left;
-  -webkit-transition: all 300ms cubic-bezier(.6, 0, .6, 1);
-     -moz-transition: all 300ms cubic-bezier(.6, 0, .6, 1);
-      -ms-transition: all 300ms cubic-bezier(.6, 0, .6, 1);
-       -o-transition: all 300ms cubic-bezier(.6, 0, .6, 1);
-          transition: all 300ms cubic-bezier(.6, 0, .6, 1);
-  -webkit-transform: translateX(-115px);
-     -moz-transform: translateX(-115px);
-      -ms-transform: translateX(-115px);
-       -o-transform: translateX(-115px);
-          transform: translateX(-115px);
+  transition: all 300ms cubic-bezier(.6, 0, .6, 1);
+  transform: translateX(-115px);
 }
 #download-button .version-long {
   font-size: 18px;
@@ -407,14 +387,12 @@ a.download-button {
   transform: translate(-49%, -99%);
   transform: translate(calc(-49%), calc(-99%));
   -moz-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-webkit-calc(-49%), -webkit-calc(-99%));
   transition: transform 400ms cubic-bezier(1, 0, 0.5, 1), top 1ms linear 1000ms, opacity 400ms cubic-bezier(1, 0, 0.5, 1);
 }
 #getting-started-popup.open .popup {
   opacity: 1;
   transform: translate(calc(-49%), calc(-49%));
   -moz-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-webkit-calc(-49%), -webkit-calc(-49%));
   transition: transform 400ms cubic-bezier(0, 0.5, 0.5, 1) 400ms, top 1ms linear, opacity 400ms cubic-bezier(0, 0.5, 0.5, 1) 400ms;
 }
 
@@ -429,7 +407,7 @@ a.download-button {
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
-  font: 700 20px/63px 'Source Sans Pro', sans-serif;
+  font: 700 20px/63px $font-body;
   display: inline-block;
   width: 300px;
   color: #fff;
@@ -460,7 +438,7 @@ a.download-button {
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
-  font: 700 14px/28px 'Source Sans Pro', sans-serif;
+  font: 700 14px/28px $font-body;
   display: inline-block;
   color: #fff !important;
   cursor: pointer;
@@ -601,7 +579,7 @@ a.download-button {
 }
 
 .event-location {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $font-body;
   text-transform: uppercase;
   line-height: 0.95em;
   color: rgba(255, 255, 255, 0.65);
@@ -709,7 +687,7 @@ a.download-button {
 
 .date {
   text-align: center;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $font-body;
   text-transform: uppercase;
   width: 34px;
   height: 34px;
@@ -774,7 +752,7 @@ a.download-button {
 
 .training-location {
   white-space: nowrap;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $font-body;
   text-transform: uppercase;
   font-weight: 600;
   color: rgba(255, 255, 255, 1);
@@ -815,7 +793,7 @@ a.download-button {
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
-  font: 700 14px/28px 'Source Sans Pro', sans-serif;
+  font: 700 14px/28px $font-body;
   display: inline-block;
   color: #fff;
   cursor: pointer;
@@ -893,7 +871,7 @@ h2.twitterhdr > span {
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
-  font: 700 14px/28px 'Source Sans Pro', sans-serif;
+  font: 700 14px/28px $font-body;
   display: inline-block;
   color: #fff;
   cursor: pointer;
@@ -904,7 +882,7 @@ h2.twitterhdr > span {
 
 #twitter-btn:hover {
   background: #DC322F;
-  transition: all 0.3s ease-in-out; -webkit-transition:all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   box-shadow: none;
   text-shadow: none;
   color: #FFF;
@@ -1104,9 +1082,7 @@ a.platform-link {
 .bullet-point > p.click:before {
   content: "\2767";
   display: inline-block;
-  -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
-  -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
-  -o-transform:matrix(-1, 0, 0, 1, 0, 0);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
 .bullet-point > p.click:after {
@@ -1170,7 +1146,7 @@ a.platform-link {
   font-size: 14px;
   line-height: 1.5em;
   text-transform: uppercase;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $font-body;
   font-weight: 700;
   letter-spacing: 1px;
   padding-bottom: .5em;
@@ -1178,7 +1154,7 @@ a.platform-link {
 
 .news-title {
   line-height: normal;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $font-body;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.1em;
@@ -1248,7 +1224,7 @@ a.platform-link {
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
-  font: 700 14px/28px 'Source Sans Pro', sans-serif;
+  font: 700 14px/28px $font-body;
   display: inline-block;
   color: #fff !important;
   cursor: pointer;
@@ -1259,7 +1235,7 @@ a.platform-link {
 
 .archive-btn:hover {
   background: #DC322F;
-  transition: all 0.3s ease-in-out; -webkit-transition:all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   box-shadow: none;
   text-shadow: none;
   color: #fff !important;
@@ -1393,7 +1369,7 @@ a.platform-link {
   float: right;
   text-decoration: none;
   color: #fff;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $font-body;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
@@ -1409,7 +1385,7 @@ a.platform-link {
 .recent-news-title {
   margin-top: 8px;
   line-height: normal;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $font-body;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.1em;
@@ -1660,16 +1636,19 @@ a.btn.download {
   border-bottom: none;
 }
 
-a.btn.download:hover, a.btn.download:focus { background-color:#58ccd5; border-color:#00B1BF; color: #FFF; text-shadow: 0 -1px 1px rgba(0, 0, 0, .7); }
+a.btn.download:hover, a.btn.download:focus {
+  background-color:#58ccd5;
+  border-color:#00B1BF;
+  color: $white;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, .7);
+}
 
 .marker {
   position: absolute;
   top: 120px;
   right: 280px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform: rotateX(60deg);
-  -moz-transform-style: preserve-3d;
-  -moz-transform: rotateX(60deg);
+  transform-style: preserve-3d;
+  transform: rotateX(60deg);
 }
 
 .marker:hover {
@@ -1685,10 +1664,9 @@ a.btn.download:hover, a.btn.download:focus { background-color:#58ccd5; border-co
   background-color: #8F1123; /*rgba(193, 44, 42, 1)*/
   z-index: 10;
   position: absolute;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform: rotateX(60deg);
-  -moz-transform-style: preserve-3d;
-  -moz-transform: rotateX(60deg);
+
+  transform-style: preserve-3d;
+  transform: rotateX(60deg);
 }
 
 .dot {
@@ -1706,21 +1684,13 @@ a.btn.download:hover, a.btn.download:focus { background-color:#58ccd5; border-co
   animation-iteration-count: infinite;
 }
 
-@-moz-keyframes flash {
-  0% {-moz-transform: scale(0);opacity: 0.0; }
-  25% {-moz-transform: scale(0);opacity: 0.1; }
-  50% {-moz-transform: scale(0.1);opacity: 0.3;}
-  75% {-moz-transform: scale(0.5);opacity: 0.5;}
-  100% {-moz-transform: scale(1);opacity: 0.0;}
+@keyframes flash {
+  0%   { transform: scale(0);   opacity: 0.0; }
+  25%  { transform: scale(0);   opacity: 0.1; }
+  50%  { transform: scale(0.1); opacity: 0.3; }
+  75%  { transform: scale(0.5); opacity: 0.5; }
+  100% { transform: scale(1);   opacity: 0.0; }
 }
-
-@-webkit-keyframes flash {
-  0% {-webkit-transform: scale(0);opacity: 0.0; }
-  25% {-webkit-transform: scale(0);opacity: 0.1; }
-  50% {-webkit-transform: scale(0.1);opacity: 0.3; }
-  75% {-webkit-transform: scale(0.5);opacity: 0.5; }
-  100% {-webkit-transform: scale(1);opacity: 0.0; }
- }
 
 #tip {
   display: none;
@@ -1820,7 +1790,7 @@ a.btn.download:hover, a.btn.download:focus { background-color:#58ccd5; border-co
   border-radius: 40px;
   text-transform: uppercase;
   text-decoration: none !important;
-  font: 700 22px/63px 'Source Sans Pro', sans-serif;
+  font: 700 22px/63px $font-body;
   width: 300px;
   color: #fff;
   cursor: pointer;
@@ -1836,7 +1806,7 @@ a.central-btn.api {
 
 .central-btn:hover {
   background:#DC322F;
-  transition:all 0.3s ease-in-out; -webkit-transition:all 0.3s ease-in-out;
+  transition:all 0.3s ease-in-out;
   box-shadow:none;
   text-shadow:none;
   color:#FFF;
@@ -2345,11 +2315,6 @@ div#toc ul > li + ul > li { margin-top: 12px; }
 .shadow {
   display: none;
   position: relative;
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
-  background-image: -webkit-gradient(linear, top, bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 1)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
   margin-top: -234px;
   height: 200px;
@@ -2482,7 +2447,7 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
-  font: 700 14px/28px 'Source Sans Pro', sans-serif;
+  font: 700 14px/28px $font-body;
   display: inline-block;
   color: #fff;
   cursor: pointer;
@@ -2507,7 +2472,7 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
-  font: 700 14px/28px 'Source Sans Pro', sans-serif;
+  font: 700 14px/28px $font-body;
   display: inline-block;
   color: #fff;
   cursor: pointer;
