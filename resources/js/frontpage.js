@@ -66,30 +66,41 @@ function showRequestedSnippet(container, requestedSnippetName, toggle) {
   if (newExpansionTarget !== state.activeExpansionTarget || snippetNamesDifferent) {
     state.activeSnippetName = requestedSnippetName;
     if (state.activeSnippetExplanation !== undefined) {
-      state.activeSnippetExplanation.hide("fast");
-      state.activeSnippetExplanation.remove();
-      $(newExpansionTarget).removeClass("col-md-12").removeClass("code-snippet");
+      state.activeSnippetExplanation.slideUp("fast", () => {
+        state.activeSnippetExplanation.remove();
+        state.activeSnippetExplanation.empty();
+        $(state.activeExpansionTarget).removeClass("col-md-12").removeClass("code-snippet");
+        state.activeExpansionTarget = newExpansionTarget;
+        $(state.activeSnippetName).addClass("bullet-point-active")
+        state.activeSnippetExplanation = $("#hidden-" + state.activeSnippetName.substring(1)).clone(true);
+        $(newExpansionTarget).append(state.activeSnippetExplanation);
+        $(newExpansionTarget).addClass("col-md-12").addClass("code-snippet");
+        state.activeSnippetExplanation.slideDown("fast");
+      });
+    } else {
+      state.activeExpansionTarget = newExpansionTarget;
+      $(state.activeSnippetName).addClass("bullet-point-active")
+      state.activeSnippetExplanation =
+      $("#hidden-" + state.activeSnippetName.substring(1)).clone(true);
+      $(newExpansionTarget).append(state.activeSnippetExplanation);
+      $(newExpansionTarget).addClass("col-md-12").addClass("code-snippet");
+      state.activeSnippetExplanation.slideDown("fast");
     }
-    state.activeExpansionTarget = newExpansionTarget;
-    $(state.activeSnippetName).addClass("bullet-point-active")
-    state.activeSnippetExplanation =
-      $("#hidden-" + state.activeSnippetName.substring(1))
-        .clone(true);
-    $(newExpansionTarget).append(state.activeSnippetExplanation);
-    $(newExpansionTarget).addClass("col-md-12").addClass("code-snippet");
-    state.activeSnippetExplanation.show("fast");
   } else if (state.activeSnippetName !== undefined && snippetNamesEqual && toggle) {
-    state.activeSnippetExplanation.hide("fast", state.activeSnippetExplanation.remove);
-    $(newExpansionTarget).removeClass("col-md-12").removeClass("code-snippet");
-    state.activeSnippetName = undefined;
-    state.activeSnippetExplanation = undefined;
-    state.activeExpansionTarget = undefined;
+    state.activeSnippetExplanation.slideUp("fast", () => {
+      state.activeSnippetExplanation.remove();
+      state.activeSnippetExplanation.empty();
+      $(state.activeExpansionTarget).removeClass("col-md-12").removeClass("code-snippet");
+      state.activeSnippetName = undefined;
+      state.activeSnippetExplanation = undefined;
+      state.activeExpansionTarget = undefined;
+    });
   }
 }
 
 function refreshPositionOfExpandedSnippets() {
   for (let elem in snippetAndExpansionState)
-    showRequestedSnippet(elem.activeSnippetName, false);
+    showRequestedSnippet(elem, snippetAndExpansionState[elem].activeSnippetName, false);
 }
 
 $(document).ready(function(){
