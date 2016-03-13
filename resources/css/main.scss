@@ -28,6 +28,13 @@ $white:         #FFFFFF;
   }
 }
 
+@media (min-width: 992px) {
+  #nutshell .container,
+  #tooling .container {
+    max-width: 1170px;
+  }
+}
+
 @media (max-width: 670px) {
   .darkbluetopbar > .container > .navbar-wrap > .container > .scala-logo {
     overflow: hidden;
@@ -426,6 +433,9 @@ a.download-button {
 
 .less-letter-spacing {
   letter-spacing: -0.5px;
+}
+.lesser-letter-spacing {
+  letter-spacing: -0.6px;
 }
 
 .learn-more {
@@ -1503,14 +1513,19 @@ footer {
   position: relative;
   z-index: 10;
   background: $dark-blue;
-  color: #fff;
+  color: $white;
   padding-top: 20px;
+  height: 360px;
+}
+
+.footer-links {
+  min-height: 180px;
 }
 
 .copyright {
   margin-top: 60px;
   margin-bottom: 60px;
-  color: $light-grey;
+  color: $white;
   font-size: 12px;
   line-height: 1.2em;
   /*font-family: "museo-slab", serif;*/
@@ -1535,12 +1550,19 @@ footer a {
   color: #fff;
   font-size: 12px;
   text-decoration: none;
-  border: none;
+}
+
+footer a:link,
+footer a:visited {
+  color: $light-grey;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 footer a:hover {
   color: #DC352E;
   text-decoration: none;
+  border-bottom: none;
 }
 
 footer li {
@@ -1584,7 +1606,7 @@ footer ul li h5 a {
 .scala-logo-footer {
   position: relative;
   float: right;
-  margin-top: 70px;
+  margin-top: 60px;
   margin-right: 20px;
 }
 
