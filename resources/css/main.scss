@@ -899,10 +899,18 @@ h2.twitterhdr > span {
 }
 
 .code-snippet {
-  background-color: rgba(41, 75, 83, 0.5);
   padding-top: 15px;
   border-radius: 10px;
   margin-left: -15px;
+}
+
+#nutshell .code-snippet,
+#editors .code-snippet {
+  background-color: rgba(41, 75, 83, 0.5);
+}
+
+#tooling .code-snippet {
+  background-color: rgba(65, 142, 161, 0.2);
 }
 
 .code-snippet-box {
@@ -972,8 +980,16 @@ h2.twitterhdr > span {
 }
 
 .bullet-point.bullet-point-active {
-  background: rgba(41, 75, 83, 0.5);
   border-radius: 5px 5px 0 0;
+}
+
+#nutshell .bullet-point.bullet-point-active,
+#editors .bullet-point.bullet-point-active {
+  background: rgba(41, 75, 83, 0.5);
+}
+
+#tooling .bullet-point.bullet-point-active {
+  background: rgba(65, 142, 161, 0.2);
 }
 
 @media (min-width:1024px) {
@@ -990,6 +1006,16 @@ h2.twitterhdr > span {
   padding-left: 0px;
   padding-right: 0px;
   border-radius: 5px;
+}
+
+#nutshell .row,
+#tooling .row {
+  justify-content: center;
+}
+
+#nutshell .bullet-point,
+#tooling .bullet-point {
+  min-width: 400px;
 }
 
 #nutshell .bullet-point > h2 > span,
@@ -2323,6 +2349,10 @@ div#toc ul > li + ul > li { margin-top: 12px; }
 #editors .snippet-explanation > p {
   color: $white;
   margin-bottom: 18px;
+}
+
+#tooling .snippet-explanation > h3 {
+  color: $dark-grey;
 }
 
 .snippet-explanation > p > code {

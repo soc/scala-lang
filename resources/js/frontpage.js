@@ -128,6 +128,8 @@ $(document).ready(function(){
   ["#eclipse", "#intellij", "#emacs", "#sublime", "#atom", "#vim"]
     .forEach(it => $(it).click(()=> showRequestedSnippet("#editors", it, true)));
 
+  ["#sbt", "#stylelint", "#compat"]
+    .forEach(it => $(it).click(()=> showRequestedSnippet("#tooling", it, true)));
 
   // truncate main visible news item if it exceeds height of sidebar
   const sideboxHgt = $(".recent-news-items").height();
