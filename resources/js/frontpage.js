@@ -76,6 +76,7 @@ function showRequestedSnippet(container, requestedSnippetName, toggle) {
         $(newExpansionTarget).append(state.activeSnippetExplanation);
         $(newExpansionTarget).addClass("col-md-12").addClass("code-snippet");
         state.activeSnippetExplanation.slideDown("fast");
+        state.activeSnippetExplanation.css("display", "flex");
       });
     } else {
       state.activeExpansionTarget = newExpansionTarget;
@@ -85,6 +86,7 @@ function showRequestedSnippet(container, requestedSnippetName, toggle) {
       $(newExpansionTarget).append(state.activeSnippetExplanation);
       $(newExpansionTarget).addClass("col-md-12").addClass("code-snippet");
       state.activeSnippetExplanation.slideDown("fast");
+      state.activeSnippetExplanation.css("display", "flex");
     }
   } else if (state.activeSnippetName !== undefined && snippetNamesEqual && toggle) {
     state.activeSnippetExplanation.slideUp("fast", () => {

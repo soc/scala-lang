@@ -35,6 +35,24 @@ $white:         #FFFFFF;
   }
 }
 
+@media (max-width: 1199px) {
+  #editors .hidden-code-snippet {
+    justify-content: center;
+  }
+
+  #hidden-eclipse,
+  #hidden-emacs,
+  #hidden-atom {
+    flex-wrap: wrap;
+  }
+
+  #hidden-intellij,
+  #hidden-sublime,
+  #hideen-vim {
+    flex-wrap: wrap-reverse;
+  }
+}
+
 @media (max-width: 670px) {
   .darkbluetopbar > .container > .navbar-wrap > .container > .scala-logo {
     overflow: hidden;
@@ -268,7 +286,7 @@ a.brand {
   color: $white;
   font-size: 20px;
   font-weight: 700;
-  margin: 0px auto 15px;
+  margin: 10px auto 15px;
 }
 a.download-button {
   color: $white;
@@ -990,6 +1008,15 @@ h2.twitterhdr > span {
 
 #tooling .bullet-point.bullet-point-active {
   background: rgba(65, 142, 161, 0.2);
+}
+
+#hidden-intellij .snippet-explanation-screenshot > img {
+  box-shadow: 0 0 20px #444444;
+  margin: 25px;
+}
+
+#editors .snippet-explanation-screenshot > img {
+  width: 630px;
 }
 
 @media (min-width:1024px) {
@@ -2324,10 +2351,10 @@ div#toc ul > li + ul > li { margin-top: 12px; }
 }
 
 .snippet-explanation {
+  box-sizing: border-box;
   position: relative;
-  float: left;
-  width: 600px;
   padding-left: 24px;
+  padding-right: 24px;
   font-size: 18px;
   line-height: 1.3em;
 }
@@ -2339,6 +2366,11 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   /*font-size: 13pt;*/
   /*line-height: 17pt;*/
   color: $white;
+}
+
+#editors .snippet-explanation {
+  width: 100%;
+  min-width: 530px;
 }
 
 #nutshell .snippet-explanation > p {
