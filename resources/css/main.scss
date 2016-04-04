@@ -918,6 +918,7 @@ h2.twitterhdr > span {
 
 .code-snippet {
   padding-top: 15px;
+  padding-bottom: 15px;
   border-radius: 10px;
   margin-left: -15px;
 }
@@ -1010,7 +1011,8 @@ h2.twitterhdr > span {
   background: rgba(65, 142, 161, 0.2);
 }
 
-#hidden-intellij .snippet-explanation-screenshot > img {
+#hidden-intellij .snippet-explanation-screenshot > img,
+#hidden-sublime .snippet-explanation-screenshot > img {
   box-shadow: 0 0 20px #444444;
   margin: 25px;
 }
