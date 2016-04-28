@@ -1174,6 +1174,10 @@ a.platform-link {
   color: $light-grey;
 }
 
+#native > p {
+  margin: 0;
+}
+
 .snippet-link:hover {
   cursor: pointer;
 }
