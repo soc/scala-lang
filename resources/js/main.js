@@ -139,6 +139,7 @@ $(document).ready(function(){
 
     var scalaLangEvents = [
     {% for event in site.categories.events %}
+    {% if event.date >= site.time %}{% comment %} No point in including outdated events {% endcomment %}
       {
         "title": "{{ event.title }}",
         "logo": "{{ event.logo }}",
@@ -147,11 +148,11 @@ $(document).ready(function(){
         "end": "{{ event.end }}",
         "url": "{{ event.link-out }}",
       },
+    {% endif %}
     {% endfor%}
     ];
 
     function doPopulateEventsPane(allEvents) {
-      console.log("doPopulateEventsPane");
       var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
       allEvents = allEvents.filter(function (event) {
         return (event.end ? new Date(event.end) : new Date(event.start)) >= new Date();
