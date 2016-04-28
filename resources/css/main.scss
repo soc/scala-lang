@@ -1037,6 +1037,10 @@ h2.twitterhdr > span {
   border-radius: 5px;
 }
 
+.section-heading {
+  flex: 0 0 100%;
+}
+
 #nutshell .row,
 #tooling .row {
   justify-content: center;
@@ -1168,7 +1172,6 @@ a.platform-link {
   text-align: center;
   font-family: $font-slab;
   font-weight: $font-slab-weight;
-  margin: 0 15px 15px;
   font-size: 13pt;
   line-height: 17pt;
   color: $light-grey;
