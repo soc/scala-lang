@@ -567,7 +567,6 @@ a.download-button {
 }
 
 .event-item-wrap {
-  cursor: pointer;
   position: relative;
   float: left;
   text-align: left;
@@ -700,7 +699,6 @@ a.download-button {
 }
 
 .training-item-wrap:hover {
-  cursor: pointer;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 3px;
   transition: background .3s ease-in-out;
