@@ -134,10 +134,10 @@ $(document).ready(function(){
     .forEach(it => $(it).click(()=> showRequestedSnippet("#tooling", it, true)));
 
   // truncate main visible news item if it exceeds height of sidebar
-  const sideboxHgt = $(".recent-news-items").height();
-  const mainboxHgt = $(".newsbox.left").height();
+  const sideboxHgt = $(".news-items").height();
+  const mainboxHgt = $(".newsbox-recently").height();
   if (sideboxHgt < mainboxHgt) {
-    $(".newsbox.left").height(sideboxHgt);
+    $(".newsbox-recently").height(sideboxHgt);
     $(".shadow").css('display','block');
   }
 

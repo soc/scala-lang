@@ -19,6 +19,7 @@ $light-grey:    #839496;
 $medium-grey:   #586E75;
 $dark-grey:     #3D626B;
 $white:         #FFFFFF;
+$red:           #DC322F;
 
 /* start override Bootstrap */
 
@@ -115,7 +116,7 @@ a:link, a:visited {
 }
 
 a:hover {
-  color: #DC322F;
+  color: $red;
   text-decoration: none;
   transition: color .1s ease-in;
 }
@@ -235,7 +236,7 @@ a.brand {
   color: #fff;
   /*background-color: #fff;*/
   /*padding: 0 31px;*/
-  background: #DC322F;
+  background: $red;
   border-radius: 15px;
   transition: background .2s ease-in;
 }
@@ -279,7 +280,7 @@ a.brand {
   height: 40px;
   line-height: 40px;
   overflow: hidden;
-  background-color: #dc322f;
+  background-color: $red;
   color: white;
   border-radius: 25px;
   white-space: nowrap;
@@ -301,7 +302,7 @@ a.download-button {
   height: 40px;
   line-height: 40px;
   overflow: hidden;
-  background-color: #dc322f;
+  background-color: $red;
   color: white;
   border-radius: 25px;
   white-space: nowrap;
@@ -423,12 +424,12 @@ a.download-button {
 
 #getting-started-popup .header {
         font-size: 24px;
-        color: #DC322F;
+        color: $red;
 }
 
 #download-btn {
   padding: 0 31px;
-  background: #DC322F;
+  background: $red;
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
@@ -476,7 +477,7 @@ a.download-button {
 }
 
 .learn-more-btn:hover {
-  background: #DC322F;
+  background: $red;
   transition: all 0.3s ease-in-out;
   box-shadow: none;
   text-shadow:none;
@@ -729,7 +730,7 @@ a.download-button {
   font-weight: 800;
   line-height: 1.1em;
   width: 34px;
-  background-color: #DC322F;
+  background-color: $red;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -831,14 +832,14 @@ a.download-button {
 
 #training-btn:hover,
 #event-btn:hover {
-  background: #DC322F;
+  background: $red;
   transition: all 0.3s ease-in-out;
   box-shadow: none;
   text-shadow: none;
   color: #FFF;
 }
 
-.news {
+#news {
   width: 100%;
   min-width:1024px;
   min-height: 400px;
@@ -850,11 +851,11 @@ a.download-button {
   min-height: 300px;
 }
 
-h2.recently,
-h2.whats-new {
+h2.news-recently,
+h2.news-whats-new {
   font-family: $font-slab;
   font-size: 20px;
-  color: #657B83;
+  color: $white;
   font-weight: $font-slab-weight;
   font-style: italic;
 }
@@ -909,7 +910,7 @@ h2.twitterhdr > span {
 }
 
 #twitter-btn:hover {
-  background: #DC322F;
+  background: $red;
   transition: all 0.3s ease-in-out;
   box-shadow: none;
   text-shadow: none;
@@ -1068,6 +1069,9 @@ a.platform-link {
   padding-right: 0;
 }
 
+#news,
+#news .bullet-point > h2 > span,
+#news .bullet-point.col-md-12:hover,
 #editors,
 #editors .bullet-point > h2 > span,
 #editors .bullet-point.col-md-12:hover {
@@ -1095,7 +1099,7 @@ a.platform-link {
 
 #events,
 #events .upcoming-events > h2 > span {
-  background: $light-blue;
+  background: $medium-blue;
 }
 
 #training,
@@ -1205,23 +1209,15 @@ a.platform-link {
   font-style: italic;
 }
 
-.news-item {
-  color: $light-grey;
-  /*border-bottom: solid 2px #93A1A1;*/
-  padding-bottom: 8px;
-  margin-bottom: 32px;
-}
-
-.news-category {
+.news-category-main {
   display: block;
-  color: #DC322F;
+  color: $red;
   font-size: 14px;
   line-height: 1.5em;
   text-transform: uppercase;
   font-family: $font-body;
   font-weight: 700;
   letter-spacing: 1px;
-  padding-bottom: .5em;
 }
 
 .news-title {
@@ -1243,7 +1239,7 @@ a.platform-link {
 
 .news-title > a:hover {
   /*background: #FDF6E3;*/
-  color: #DC322F;
+  color: $red;
   text-decoration: none;
 }
 
@@ -1267,15 +1263,6 @@ a.platform-link {
   /*font-style: italic;*/
 }
 
-.news-date {
-  color: $light-grey;/*$green;*/
-  border-top: solid 1px #93A1A1;/*rgba(44, 56, 70, 0.4);*/
-  margin-top: 8px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  font-weight: bold;
-}
-
 .news-date > img {
   margin-right: 0px;
   margin-top: -5px;
@@ -1285,9 +1272,9 @@ a.platform-link {
   margin-top: 14px;
 }
 
-.news-body, .recent-news-body {
+.news-body, .news-recent-news-body {
   line-height: 1.4em;
-  color: #586E75;
+  color: $white;
 }
 
 .archive-btn {
@@ -1302,11 +1289,11 @@ a.platform-link {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   text-shadow: none;
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 .archive-btn:hover {
-  background: #DC322F;
+  background: $red;
   transition: all 0.3s ease-in-out;
   box-shadow: none;
   text-shadow: none;
@@ -1354,88 +1341,68 @@ a.platform-link {
   /*color: #225966;*/
   color: rgba(255, 255, 255, 0.4);
   border: none;
-  /*border-bottom: solid 1px #DC322F;*/
+  /*border-bottom: solid 1px $red;*/
 }
 
 .add-training a:hover,
 .add-event a:hover {
-  color: #DC322F;
+  color: $red;
   text-decoration: none;
 }
 
-.recent-news-item:first-child {
+.news-item:first-child {
   padding-top: 20px;
   border-top: 0px;
   border-bottom: 1px solid #F2F5F8;
 }
 
-.recent-news-item:last-child {
+.news-item:last-child {
   padding-bottom: 20px;
   border-top: 1px solid #F2F5F8;
   border-bottom: 0px;
 
 }
 
-.recent-news-item {
+.news-item {
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 10px;
   padding-top: 10px;
-  border-top: 1px solid #F2F5F8;
-  border-bottom: 1px solid #F2F5F8;
+  color: $light-grey;
 }
 
-.recent-news-item:hover {
-  background: rgba(226, 233, 239, 1);
-  border-bottom: 1px solid rgba(206, 210, 214, 0.6);
-  border-top: 1px solid rgba(206, 210, 214, 0.6);
-}
-
-.recent-news-item:first-child:hover {
-  background: rgba(226, 233, 239, 1);
-  border-bottom: 1px solid rgba(206, 210, 214, 0.6);
-  border-top: 0px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.recent-news-item:last-child:hover {
-  background: rgba(226, 233, 239, 1);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-top: 1px solid rgba(206, 210, 214, 0.6);
-  border-bottom: 0px;
-}
-
-.recent-news-items {
+.news-items {
   background: rgba(226, 233, 239, 0.4);
   border-radius: 5px;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
-.recent-news-author {
+.news-author {
   margin-top: 6px;
 }
 
-.recent-news-author-name,
-.recent-news-author > .by {
+.news-author-name,
+.news-author > .by {
   display: inline;
-  /*color: #DC322F;*/
+  /*color: $red;*/
   color: #00b0e3;
   font-family: $font-slab;
 }
 
-.recent-news-date {
+.news-date {
+  color: $dark-grey;
+  padding-bottom: 8px;
+  font-weight: bold;
   padding-top: 3px;
   margin-top: 3px;
   display: inline-block;
   font-family: $font-slab;
   font-size: 12px;
   width: 100%;
-  /*line-height: 1.5em;*/
-  border-top: 1px solid rgba(206, 210, 214, 0.6);
 }
 
-.recent-news-category {
+.news-category {
   display: inline-block;
   position: relative;
   float: right;
@@ -1447,14 +1414,12 @@ a.platform-link {
   text-transform: uppercase;
   padding-left: 10px;
   padding-right: 10px;
-  /*padding-top: 3px;*/
-  /*padding-bottom: 3px;*/
-  font-size: 10px;
-  background: #DC322F;
+  font-size: 12px;
+  background: $red;
   border-radius: 15px;
 }
 
-.recent-news-title {
+.news-title {
   margin-top: 8px;
   line-height: normal;
   font-family: $font-body;
@@ -1464,23 +1429,29 @@ a.platform-link {
   color: $medium-blue;
 }
 
-.recent-news-title a:link,
-.recent-news-title a:visited {
+.news-title a:link,
+.news-title a:visited {
   color: $medium-blue;
   border: none;
 }
 
-.recent-news-title a:hover {
-  color: #DC322F;
+.news-title a:hover {
+  color: $red;
   text-decoration: none;
 }
 
-.recent-news-body {
+.news-body {
   margin-top: 8px;
 }
 
-.rss {
+#rss-icon {
   float: right;
+  position: relative;
+  top: -34px;
+  left: -15px;
+  background-color: $light-blue;
+  border-bottom: none !important;
+  padding-left: 10px;
 }
 
 .tweets { position: relative; zoom: 1; }
@@ -1519,14 +1490,14 @@ a.platform-link {
   margin-top: 10px;
 }
 
-.tweet .text a { color: #DC322F; border: none; }
+.tweet .text a { color: $red; border: none; }
 .tweet .text a:hover { color: #00b0e3; text-decoration: none;}
 .original-tweet { font-family: $font-slab; font-size: 13px; padding-top: 8px; color: #fff;}
 .original-tweet > a { color: #fff; /*color: $light-grey;*/ font-weight: normal; text-decoration: none; border: none; }
-.original-tweet > a:hover { color: #DC322F; }
+.original-tweet > a:hover { color: $red; }
 .tweet-username { color: rgb(131, 148, 150); white-space: nowrap; line-height: 1em; display: inline-block; padding-left: .5em; }
 .tweet-username > a { color: #fff; /*color: #657B83;*/ font-weight: bold; text-decoration: none; border: none; }
-.tweet-username > a:hover { color: #DC322F; border: none; }
+.tweet-username > a:hover { color: $red; border: none; }
 .triangle { position: relative; bottom: 9px; left: 40px; height: 0px; width: 1px; margin-left: auto; margin-right: auto; border-top: 16px solid rgba(0, 30, 30, 0.7); border-left: none; border-right: 16px solid transparent; border-bottom: none; }
 .bottom-anchored { position: absolute; bottom: 0px; }
 .avatar-wrapper { border-radius: 40px; overflow: hidden; width: 50px; height: 50px; display: inline-block; margin-left: 12px; }
@@ -1889,7 +1860,7 @@ a.central-btn.api {
 }
 
 .central-btn:hover {
-  background:#DC322F;
+  background:$red;
   transition:all 0.3s ease-in-out;
   box-shadow:none;
   text-shadow:none;
@@ -2040,7 +2011,7 @@ a.for-platform {
 }
 
 .left-side a:hover, .right-side a:hover, .where-to-learn-more a.italicize:hover {
-  color: #DC322F;
+  color: $red;
 }
 
 .getting-started {
@@ -2146,7 +2117,7 @@ figcaption {
 
 .main-page-column > h2 {
   font-family: $font-slab;
-  color: #DC322F;
+  color: $red;
   font-weight: $font-slab-weight;
   line-height: 1.1em;
   margin-top: 28px;
@@ -2321,7 +2292,7 @@ div#toc > ul > li > a:link, div#toc > ul > li > a:visited {
   border-bottom: 2px solid #F2F5F8;
 }
 div#toc > ul > li > a:hover {
-  color: #DC322F;
+  color: $red;
   text-decoration: none;
   transition: color .1s ease-in;
 }
@@ -2403,37 +2374,29 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   color: rgba(38, 139, 210, 0.8);
 }
 
-.newsbox.left { overflow: hidden; }
+.newsbox-recently { overflow: hidden; }
 
 .shadow {
   display: none;
   position: relative;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
-  margin-top: -234px;
-  height: 200px;
+  background-color: $dark-blue;
   width: 100%;
-  border-bottom: solid 2px #93A1A1;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
-.shadow > .more {
-  position: relative;
-  padding-top: 176px;
-}
-
-.shadow > .more > a {
-  color: #839499;
+#news-more {
+  color: $white;
   font-family: $font-slab;
   font-size: 14px;
   font-weight: normal;
   font-style: italic;
-  line-height: 1.1em;
+  line-height: 2.0em;
   border-bottom: none;
 }
 
-.shadow > .more > a:hover {
-  color: #DC322F;
+#news-more:hover {
+  color: $red;
 }
 
 .centerclear {
@@ -2536,7 +2499,7 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   margin-top: 124px;
   margin-left: 240px;
   padding: 0 18px;
-  background: #DC322F; /*brighter color: 97BE49*/
+  background: $red; /*brighter color: 97BE49*/
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;
@@ -2561,7 +2524,7 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   margin-top: 124px;
   margin-left: 80px;
   padding: 0 18px;
-  background: #DC322F; /*brighter color: 97BE49*/
+  background: $red; /*brighter color: 97BE49*/
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none !important;

@@ -4,12 +4,6 @@ scalaversion: "2.11.8"
 devscalaversion: "2.12.0-M5"
 
 baseurl: ""
-exclude: [bundle-vendor]
-future: true
-
 markdown: kramdown
-highlighter: null
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "strikethrough", "lax_spacing", "space_after_headers", "superscript", "footnotes"]
-
+exclude: [bundle-vendor]
 future: true # necessary so that Jekyll even considers looking at posts with a date in the future (events)
