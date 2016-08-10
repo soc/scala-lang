@@ -1,20 +1,27 @@
-<div class="snippet-explanation" style="width: 100%;">
-  <h3>Go Functional with Higher-Order Functions</h3>
-  <p>In Scala, functions are values, and can be defined as anonymous functions
-  with a concise syntax.</p>
+<div style="flex-wrap: wrap;">
+<div class="row">
+  <div class="col-md-12 snippet-explanation">
+    <h3>Go Functional with Higher-Order Functions</h3>
+    <p>In Scala, functions are values, and can be defined as anonymous functions with a concise syntax.</p>
+  </div>
 </div>
 
-<figure class="code" style="width: 550px; float: left;">
-  <figcaption>Scala</figcaption>
-  <pre><code>val people: Array[Person]
+<div class="row">
+  <div class="col-md-5">
+    <figure class="code" style="float: left;">
+      <figcaption>Scala</figcaption>
+      <pre><code>val people: Array[Person]
 
 // Partition `people` into two arrays `minors` and `adults`.
 // Use the higher-order function `(_.age &lt; 18)` as a predicate for partitioning.
 val (minors, adults) = people partition (_.age &lt; 18)</code></pre>
-</figure>
-<figure class="code" style="width: 500px; float: right;">
-  <figcaption>Java</figcaption>
-  <pre><code>List&lt;Person&gt; people;
+    </figure>
+  </div>
+
+  <div class="col-md-5">
+    <figure class="code" style="float: right;">
+    <figcaption>Java</figcaption>
+    <pre><code>List&lt;Person&gt; people;
 
 List&lt;Person&gt; minors = new ArrayList&lt;Person&gt;(people.size());
 List&lt;Person&gt; adults = new ArrayList&lt;Person&gt;(people.size());
@@ -24,17 +31,22 @@ for (Person person : people) {
     else
         adults.add(person);
 }</code></pre>
-</figure>
+    </figure>
+  </div>
+</div>
 
-<div class="snippet-explanation">
-  <p>
-    In the Scala example on the left, the <code>partition</code> method, available on all
-    collection types (including <code>Array</code>), returns two new collections
-    of the same type. Elements from the original collection are partitioned
-    according to a predicate, which is given as a lambda, i.e., an anonymous
-    function. The <code>_</code> stands for the parameter to the lambda, i.e.,
-    the element that is being tested. This particular lambda can also be written
-    as <code>(x => x.age &lt; 18)</code>.
-  </p>
-  <p>The same program is implemented in Java on the right.</p>
+<div class="row">
+  <div class="col-md-12 snippet-explanation">
+    <p>
+      In the Scala example on the left, the <code>partition</code> method, available on all
+      collection types (including <code>Array</code>), returns two new collections
+      of the same type. Elements from the original collection are partitioned
+      according to a predicate, which is given as a lambda, i.e., an anonymous
+      function. The <code>_</code> stands for the parameter to the lambda, i.e.,
+      the element that is being tested. This particular lambda can also be written
+      as <code>(x => x.age &lt; 18)</code>.
+    </p>
+    <p>The same program is implemented in Java on the right.</p>
+  </div>
+</div>
 </div>

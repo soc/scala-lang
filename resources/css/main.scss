@@ -21,6 +21,8 @@ $dark-grey:     #3D626B;
 $white:         #FFFFFF;
 $red:           #DC322F;
 
+$border-bottom-transparent: 2px solid rgba(242,245,248,0.4);
+
 /* start override Bootstrap */
 
 @media (min-width: 1200px) {
@@ -256,7 +258,7 @@ a.brand {
   position: relative;
   width: 100%;
   min-width:1024px;
-  height: 540px;
+  height: 625px;
 }
 
 .splash-content {
@@ -535,6 +537,13 @@ a.download-button {
   margin-bottom: 14px;
   color: #fff;
   width: 640px;
+}
+.splash-pitch a {
+  color: $white;
+  border-bottom: $border-bottom-transparent;
+}
+.splash-pitch > p {
+  margin-bottom: 0.5rem;
 }
 
 #events {
@@ -1268,8 +1277,9 @@ a.platform-link {
   margin-top: -5px;
 }
 
-.news-body {
-  margin-top: 14px;
+.news-body a {
+  color: $white;
+  border-bottom: $border-bottom-transparent;
 }
 
 .news-body, .news-recent-news-body {
