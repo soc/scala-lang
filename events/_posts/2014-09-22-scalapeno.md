@@ -1,7 +1,7 @@
 ---
 category: event
 title: Scalapeño 2014
-logo: /resources/img/scalapeno2014-logo.png
+logo: /resources/img/scalapeno2014.png
 location: Tel-Aviv
 description: The second annual Israeli Scala conference
 start: 22 September 2014
