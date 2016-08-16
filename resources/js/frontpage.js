@@ -124,7 +124,7 @@ $(document).ready(function(){
   ["#nutshell", "#editors", "#tooling"].forEach(
     cat => snippetAndExpansionState[cat] = { activeSnippetName: undefined, activeSnippetExplanation: undefined, activeExpansionTarget: undefined });
 
-  ["#java-interop", "#expressive", "#concurrency-distribution", "#traits", "#pattern-matching", "#higher-order-functions"]
+  ["#java-interop", "#expressive", "#concurrency-distribution", "#traits", "#pattern-matching", "#higher-order-functions", "#extensible", "#scalable", "#stable"]
     .forEach(it => $(it).click(()=> showRequestedSnippet("#nutshell", it, true)));
 
   ["#eclipse", "#intellij", "#emacs", "#sublime", "#atom", "#vim"]

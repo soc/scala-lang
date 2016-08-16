@@ -930,7 +930,6 @@ h2.twitterhdr > span {
   padding-top: 15px;
   padding-bottom: 15px;
   border-radius: 10px;
-  margin-left: -15px;
 }
 
 #nutshell .code-snippet,
@@ -2352,10 +2351,13 @@ div#toc ul > li + ul > li { margin-top: 12px; }
 .snippet-explanation > h3 {
   font-family: $font-slab;
   font-weight: normal;
-  /*margin: 0 15px 15px;*/
-  /*font-size: 13pt;*/
-  /*line-height: 17pt;*/
   color: $white;
+}
+
+
+.snippet-explanation > h4 {
+  font-family: $font-slab;
+  font-weight: normal;
 }
 
 #editors .snippet-explanation {

@@ -1,0 +1,65 @@
+<div style="flex-wrap: wrap;">
+  <div class="row">
+    <div class="col-md-12 snippet-explanation">
+      <h3>Extensible</h3>
+      <h4>Conext Bounds</h4>
+      <h4>Implicit Classes</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <figure class="code" style="float: left;">
+        <figcaption>X</figcaption>
+        <pre><code>// Old legacy library
+class Person(val first: String, last: String, val born: String)</code></pre>
+      </figure>
+    </div>
+    <div class="col-md-5">
+      <figure class="code" style="float: right; width: 600px">
+        <figcaption>Y</figcaption>
+        <pre><code>// Interface of new API
+trait Human {
+  def firstName: String
+  def lastName:  String
+  def fullName = s"$firstName $lastName"
+  def dateOfBirth: java.time.LocalDate
+  def age: java.time.Period = dateOfBirth until java.time.LocalDate.now
+}</code></pre>
+      </figure>
+    </div>
+  </div>
+  <div class="row">
+    <figure class="code">
+      <figcaption>Z</figcaption>
+      <pre><code>// Bridge the gap
+implicit class PersonAsHuman(person: Person) extends Human {
+  def firstName = person.first
+  def lastName  = person.last
+  val dateOfBirth = java.time.LocalDate.parse(person.born)
+}</code></pre>
+    </figure>
+  </div>
+  <div class="row">
+    <figure class="code">
+      <figcaption>Z</figcaption>
+      <pre><code>// Usage
+val joe = new Person("Joe", "Smith", 42) // from old library
+joe.first // old API works
+joe.firstName // new API
+joe.fullName // new API we got for free
+
+// API from new library
+def isAdult(human: Human): Boolean = ???
+// pass joe, without requring explicit conversion
+isAdult(joe)
+hasBirthDay
+</code></pre>
+    </figure>
+  </div>
+  <div class="row">
+    <div class="snippet-explanation">
+      <h3></h3>
+      <p></p>
+    </div>
+  </div>
+</div>
