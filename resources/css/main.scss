@@ -575,6 +575,10 @@ a.download-button {
   padding: 8px;
 }
 
+.event-item-wrap:link {
+  border: none;
+}
+
 .event-item-wrap:hover {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 3px;
