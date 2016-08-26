@@ -30,7 +30,7 @@ title: Documentation
     </div>
     <div class="col-md-4 doc-block">
       <h3><a href="{{ site.baseurl }}/documentation/faq/">Common Questions</a></h3>
-      <p>Frequent questions and answers about the Scala and its ecosystem.</p>
+      <p>Frequent questions and answers about Scala and its ecosystem.</p>
     </div>
   </div>
 
