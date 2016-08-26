@@ -33,6 +33,138 @@ Something along the lines of:
 
 Martin: Yes, I think that's spot on. Orthogonality of features makes a language harder to learn.
 
+## Language
+
+### Why does Scala use "i: Int" syntax instead of "Int i"?
+
+// Mention generics instead
+
+It improves readability especially in combination with Scala's type inference. Example:
+```scala
+(1 to 10).map((x: Int) => x*x) // explicit type annotation
+(1 to 10).map((x) => x*x) // uses type inference
+(1 to 10).map((Int x) => x*x) // not valid Scala syntax
+```
+Line 1 is unnecessarily verbose as the compiler knows that parameter x must be of type Int. Line 2 shows the same code using type inference. Line 3 shows how it would look like in Java syntax, which is less readable in Scala.
+
+This is not issue in Java, because it has no type inference, so it is clear that the first token is type and second token is identifier. If Scala used this syntax, it would not be so clear, because you can omit the type in some cases.
+
+### Why does Scala use [] instead of <> for generic types?
+Many languages that were created without generics in mind have trouble adding generics later on, as all pairs of brackets, `(` and `)`, `{` and `}`, `<` and `>`, have already been put to use.
+
+Of that group, `<` and `>` are usually the only symbols left that are practical to overload with a new, different meaning (`<` and `>` are often employed as binary operators expressing comparisons or bitshift operations, not as brackets).
+Unfortunately, even `<` and `>` have troubling parsing issues that require workarounds. While parsing should be solely considered a problem for compiler writers, it is often the case that things that are hard to parse for machines are often hard to read for humans, too.
+
+The general issue is that it's hard to tell for the compiler, given a token stream of `instance . foo <`, whether this is the left side of a comparison and `<` is a binary operator or the start of a generic type argument within a method call.
+
+Some languages try to avoid this issue by making the syntax less consistent: As an example, Java's syntax for _defining_ and _using_ generics in instance methods is completely different due to this issue:
+
+```
+<T> void foo<T>() { ... } // definition
+instance.<String>foo()    // usage
+```
+
+Other languages like C# try to retain a more consistent syntax by introducing unlimited look-ahead: The parser will keep reading input after the `<` until it can make a decision.
+
+Scala was designed with generics from the start and doesn't suffer these issues.
+
+1. The usage of a generic type mirrors it's definition:
+
+```
+class Foo[T]
+new Foo[String]
+def foo[T] = ???
+foo[String]
+```
+
+2. In Scala, the use of brackets is straight-forward and easy to understand:
+  - Whenever you see `[]`, you know that everything in between is a type.
+  - Whenever you see `()`, you know it is a parameter list, a single expression or a tuple.
+  - Whenever you see `{}`, you know it is a block that can contain multiple statements and definitions.
+
+### Why does Scala have special syntax for `new`? Why not express instance creation without the `new`?
+
+On many platforms, including the JVM, the creation of a new instance has very specific semantics,
+both on the language-level and on the level of the memory model, which both restrict and complicate the usage of `new`.
+
+Scala tries to be explicit about these special semantics by requiring the use of the `new` keyword,
+instead of e. g. allowing `ClassName()` to stand in for `new ClassName()`.
+
+Additionally, if Scala considered `ClassName()` to be a constructor invocation, this syntax wouldn't work for interfaces.
+
+Scala's design approach considers the following points:
+
+- Explicit: Special operations should be explicit.
+- Focused: The task of a constructor is to return a valid instance by initializing the fields of the instance with the arguments passed to the constructor invocation, not arbitrary work like parsing inputs or computing values.
+
+Instead of allowing complicated initialization logic with multiple, overloaded constructors,
+Scala encourages the use of explicitly named factory methods in companion objects:
+
+- Named: As factory methods are just normal methods, they can be named appropriately. If a method involves parsing data from a `String`, the name can express it.
+- General: Both classes and interfaces can have companion objects, and therefore factory methods.
+- Flexible: Factory methods, unlike constructors, can decide which type they return and whether the create a new instance or return a cached value: If construction could fail, they can communicate this fact clearly with `Option[ClassName]` instead of throwing an exception. If a different class should be used depending on the inputs, factory methods can do that. If the method receives the same inputs multiple times, it can return an existing instance.
+- Concise: As factory methods are the encouraged design approach in Scala, they can make use of the "best syntax": `ClassName(arg1, arg2, ...)`.
+
+
+### Why does Scala provide implicit classes instead of extension methods?
+Todo...
+
+### What does _ (underscore) mean?
+
+It can be used in many places in Scala and its meaning depends on the context it is used. It usually means *I need to refer to something, but I don't need it so I won't give it a name*. Examples:
+```scala
+import foo._
+x match { case (“a”, _) => ... }
+x.map(_ * 2)
+x.map((_: Int) * 2)
+```
+Explanation:
+* line 1: import everything from package foo (similar to import foo.* in Java)
+* line 2: second parameter can be anything in the pattern match
+* line 3: equivalent to `x.map(x => x * 2)` but more concise. It means “the value” and the expression `_ * 2` is a partial application.
+* line 4: same as above, but with explicit (non-infered) type annotation
+
+### Why can’t I define both a variable and a method with the same name?
+
+Compared to other languages, Scala vastly reduces the number of different namespaces.
+
+This reduces the mental overhead as a name can only refer to either a term (value) or a type in Scala
+and makes it straight-forward to replace or implement a nullary method with a value,
+to substitute a package with an package object and so on without breaking source-compatibility.
+
+In contrast, Java has six different namespaces (packages, classes and interfaces, methods, fields, types and labels), making this a valid program:
+
+```
+package foo;
+public class foo<foo> {
+  public foo foo;
+  public foo foo() {
+    foo = foo(0);
+    foo: while (true) {
+      int foo = 42;
+      while (true) {
+        foo(foo).foo = (foo) null;
+        break foo;
+      }
+    }
+    return this;
+  }
+}
+```
+
+### No special syntax for null?
+null is not the problem, it’s a symptom of the problem:
+overuse of null because it so convenient
+null can mean different things (absent value, missing value, error condition), context lost.
+NPEs
+
+### What are Scala's Null, Nothing, None?
+Null is the type for null value. (Notice the different case between “null” and “Null”.) It is subtype of any reference type.
+
+Nothing is a type which has no value. Don’t confuse this with the Unit (or void) type. When some expression is a type of Nothing, it will never return. It will either throw an exception or never end. For this reason, Nothing is subtype of any other type. This makes expressions like the following one valid:
+
+`if(x == 0) sys.error(“x shall not be zero”) else 5/x`
+
 ## Development
 
 ### Which editors and IDEs support Scala?
@@ -60,54 +192,6 @@ Todo...
 
 ### What are Scala's compatibility guarantees?
 Compare with Java's guarantees?
-
-### Why does Scala use "i: Int" syntax instead of "Int i"?
-It improves readability especially in combination with Scala's type inference. Example:
-```scala
-(1 to 10).map((x: Int) => x*x) // explicit type annotation
-(1 to 10).map((x) => x*x) // uses type inference
-(1 to 10).map((Int x) => x*x) // not valid Scala syntax
-```
-Line 1 is unnecessarily verbose as the compiler knows that parameter x must be of type Int. Line 2 shows the same code using type inference. Line 3 shows how it would look like in Java syntax, which is less readable in Scala.
-
-This is not issue in Java, because it has no type inference, so it is clear that the first token is type and second token is identifier. If Scala used this syntax, it would not be so clear, because you can omit the type in some cases.
-
-### Why does Scala use [] for generic types?
-Todo...
-
-### Why does Scala provide implicit classes instead of extension methods?
-Todo...
-
-### What does _ (underscore) mean?
-It can be used in many places in Scala and its meaning depends on the context it is used. It usually means *I need to refer to something, but I don't need it so I won't give it a name*. Examples:
-```scala
-import foo._
-x match { case (“a”, _) => ... }
-x.map(_ * 2)
-x.map((_: Int) * 2)
-```
-Explanation:
-* line 1: import everything from package foo (similar to import foo.* in Java)
-* line 2: second parameter can be anything in the pattern match
-* line 3: equivalent to `x.map(x => x * 2)` but more concise. It means “the value” and the expression `_ * 2` is a partial application.
-* line 4: same as above, but with explicit (non-infered) type annotation
-
-### Why can’t I define both a variable and a method with the same name?
-* Less namespaces, allows replacing one with another
-* Show Java program with same names (package, class, method, field, type, label, …)
-
-### No special syntax for null?
-null is not the problem, it’s a symptom of the problem:
-overuse of null because it so convenient
-null can mean different things (absent value, missing value, error condition), context lost.
-NPEs
-
-### What are Scala's Null, Nothing, None?
-Null is the type for null value. (Notice the different case between “null” and “Null”.) It is subtype of any reference type.
-
-Nothing is a type which has no value. Don’t confuse this with the Unit (or void) type. When some expression is a type of Nothing, it will never return. It will either throw an exception or never end. For this reason, Nothing is subtype of any other type. This makes expressions like the following one valid:
-
-`if(x == 0) sys.error(“x shall not be zero”) else 5/x`
 
 ## JVM
 
