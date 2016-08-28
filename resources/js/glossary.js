@@ -1,9 +1,10 @@
 /*****************************
  * Text Filtering (Glossary) *
  *****************************/
-$(window).load(function(){
+jQuery(document).ready(function(){
   $('#filter').focus();
-  $("#filter").keydown(function(){
+
+  $("#filter").keyup(function(){
     // Retrieve the input field text and reset the count to zero
     var filter = $(this).val(), count = 0;
     // Loop through the comment list
