@@ -276,7 +276,7 @@ This sorta-kinda works for postfix operators too:
 
     val drivel = "bibble" twice
 
-Calling methods in infix and postfix nodadion is obviously fairly simple
+Calling methods in infix and postfix notation is obviously fairly simple
 syntactic sugar over normal dot notation. But this seemingly minor feature
 is very important in constructing DSLs, allowing Scala to do in internal
 DSLs what many languages can do only using external tools. For example,
