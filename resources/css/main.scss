@@ -257,7 +257,6 @@ a.brand {
 .splash {
   position: relative;
   width: 100%;
-  min-width:1024px;
   height: 625px;
 }
 
@@ -1709,108 +1708,7 @@ a.btn.download:hover, a.btn.download:focus {
   text-shadow: 0 -1px 1px rgba(0, 0, 0, .7);
 }
 
-.marker {
-  position: absolute;
-  top: 120px;
-  right: 280px;
-  transform-style: preserve-3d;
-  transform: rotateX(60deg);
-}
-
-.marker:hover {
-  cursor: pointer;
-}
-
-.pulse {
-  width: 10px;
-  height: 10px;
-  border: 5px solid #8d4143;
-
-  border-radius: 30px;
-  background-color: #8F1123; /*rgba(193, 44, 42, 1)*/
-  z-index: 10;
-  position: absolute;
-
-  transform-style: preserve-3d;
-  transform: rotateX(60deg);
-}
-
-.dot {
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  top: -25px;
-  left: -25px;
-  z-index: 2;
-  opacity: 0;
-  border: 10px solid #a60300; /*rgba(0,166,205,1);*/
-  background: transparent;
-  border-radius: 60px;
-  animation: flash 2s ease-out;
-  animation-iteration-count: infinite;
-}
-
-@keyframes flash {
-  0%   { transform: scale(0);   opacity: 0.0; }
-  25%  { transform: scale(0);   opacity: 0.1; }
-  50%  { transform: scale(0.1); opacity: 0.3; }
-  75%  { transform: scale(0.5); opacity: 0.5; }
-  100% { transform: scale(1);   opacity: 0.0; }
-}
-
-#tip {
-  display: none;
-  position: absolute;
-  top: 145px;
-  left: 710px;
-  background: rgba(133, 153, 0, 0.6);
-  border: 0px;
-  padding: 10px;
-  width: 400px;
-  padding: 20px;
-  font-family: $font-slab;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 1.4em;
-  color: #fff;
-}
-
-#tip:after {
-  position: absolute;
-  display: inline-block;
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0 0 12px 20px;
-  border-color: transparent transparent rgba(133, 153, 0, 0.6) transparent;
-  left: 0px;
-  top: -12px;
-  content: '';
-}
-
- .ring {
-  position: relative;
-  height: 225px;
-  width: 225px;
-  margin: 0 auto;
-  margin-top: -200px;
-  z-index: 40;
-  border: 60px solid rgba(0, 43, 54, 0.5);
-  border-radius: 211px;
- }
-
- .inner-ring {
-  position: relative;
-  height: 225px;
-  width: 225px;
-  margin: 0 auto;
-  z-index: 40;
-  border: 0px;
-  background: $dark-blue;
-  border-radius: 211px;
- }
-
- .central {
+.central {
   position: relative;
   height: 345px;
   margin-top: -175px;
@@ -1858,24 +1756,23 @@ a.btn.download:hover, a.btn.download:focus {
   text-decoration: none !important;
   font: 700 22px/63px $font-body;
   width: 300px;
-  color: #fff;
+  color: $white;
   cursor: pointer;
-  webkit-transition: all 0.3s ease-in-out;
   text-shadow: none;
 }
 
 a.central-btn.download,
 a.central-btn.api {
   border-bottom: 0px;
-  color: #fff;
+  color: $white;
 }
 
 .central-btn:hover {
-  background:$red;
-  transition:all 0.3s ease-in-out;
-  box-shadow:none;
-  text-shadow:none;
-  color:#FFF;
+  background: $red;
+  transition: all 0.3s ease-in-out;
+  box-shadow: none;
+  text-shadow: none;
+  color: $white;
 }
 
 .scala-version {

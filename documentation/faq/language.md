@@ -218,7 +218,7 @@ val nullValue2: Null = null // explicit
 [**`Nothing`**](http://www.scala-lang.org/api/#scala.Nothing)) is a type which has no value. When some expression is of type `Nothing`, it will never return: It will either throw an exception or go into an infinite loop.
 
 ```
-def eventLoop(): Nothing = ...
+def eventLoop(): Nothing = while (true) { ... }
 ```
 
 For this reason, `Nothing` is subtype of any other type. This makes expressions like the following one valid:
