@@ -689,11 +689,41 @@ In Scala, Generics are defined within _square brackets_, not _angle brackets_:
 
     class Box[T]
 
-A generic type can be constrained with
+The most often used features of generics are found both in C# and in Scala.
+There is also some disparity.
 
-- upper bounds `<:` (the generic type must be a subtype of another type)
-- lower bounds `>:` (the generic type must be a supertype of another type)
-- context bounds `:` (the generic type must support the operations described by another type)
+### Constraints
+
+Just like in C#, generic types can be constrained in some way. Scala has 
+upper bounds, where the generic type must be a subtype of another type,
+lower bounds, where the generic type must be a supertype of another type,
+and context bounds, where there must be some implicit available.
+
+Scala doesn't have constraints on `struct` or `class` as there is no
+conceptual difference in Scala, though you can constraint to an upper
+bound of `AnyVal` or `AnyRef` (see [the section on structs](#Structs))
+
+The following table shows how to use generic constraints in scala:
+
+|               | C#                                   | Scala                          |
+|---------------|--------------------------------------|--------------------------------|
+| Upper bound   | `class Upper<A> where A : Supertype` | `class Upper[A <: Supertype]`  |
+| Lower bound   | no equivalent                        | `class Lower[A >: Subtype]`    |
+| Context bound | no equivalent                        | `class Context[A : ContextType]` |
+| new           | `class Default<A> where A : new`     | no equivalent                  |
+| struct        | `class Structy<A> where A : struct`  | `class Vally[A <: AnyVal]`     |
+| class         | `class Classy<A> where A : class`    | `class Reffy[A <: AnyRef]`     |
+
+
+### Variance
+
+Opposed to C#, where only interfaces and delegates can have variance, in Scala, all things
+that can be generic in can have variance. Varaince is indicated with a `+` in front of the
+type for covariance, and a `-` in front of the type for contravariance
+
+`class Box[+T]` declares a class Box that is covariant in it's parameter `T`, much like
+the C# interface `interface IBox<out T>` would be. `trait PrettyPrinter[-T]` is contravaraint
+in its paramter T, just like the C# interface `interface IPrettyPrinter<in T>` would be.
 
 ## Implicits
 
