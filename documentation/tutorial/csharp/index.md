@@ -388,6 +388,8 @@ The reason this keeps getting verbose on us is that C# doesn’t provide any
 syntatical support for tuples. To C#, a `Tuple<>` is just another generic
 type.
 
+*The upcoming C# 7 release will have support for Tuples, which will function much like Scala tuples*
+
 Really, what we're really trying to articulate by returning a `Tuple<>` is,
 "this method has several outputs." So what do we want to do with those
 outputs?  We want to access them, for example to stash them in variables,
