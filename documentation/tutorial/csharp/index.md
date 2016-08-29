@@ -276,7 +276,7 @@ This sorta-kinda works for postfix operators too:
 
     val drivel = "bibble" twice
 
-Calling methods in infix and postfix nodadion is obviously fairly simple
+Calling methods in infix and postfix notation is obviously fairly simple
 syntactic sugar over normal dot notation. But this seemingly minor feature
 is very important in constructing DSLs, allowing Scala to do in internal
 DSLs what many languages can do only using external tools. For example,
@@ -327,18 +327,20 @@ Scala has the same concept and ships with classes like `Function0[R]`,
 Unlike C#, the language natively supports them, so that function types
 can be spelled as `(T1, T2) => R` instead of `Function2[T1, T2, R]`.
 For example, a predicate of integers would be of type `(Int) => Boolean`.
-If there is only one input type, the parens can be left out like this:
-`Int => Boolean`.
+If there is only one input type, the parentheses can be left out like this:
+`Int => Boolean`. This should look familiar to you, as it echoes the
+notation both Scala and C# use for lambda functions: `(i: Int) => i > 7`
+is of type `Int => Boolean`.
 
-Effectively, Scala gets rid of all those weird custom delegate types
-like `Predicate<T>` and `Comparer<T>` and has a single family of
-function types like the C# `Func<...>` family.
+Scala has no need for custom delegate types like `Predicate<T>` and
+`Comparer<T>` and has a single family of function types like the C#
+`Func<...>` family.
 
 Refering to methods that don't have a return value in C# is not
 possible with `Func<T, void>`, because void isn't a valid type.
 It is necessary to write `Action<T>` instead. Scala doesn't have
 different families of delegate types, it just has the built-in
-function types.  Fortunately, in Scala, `Unit` is a real type, so you
+function types. Fortunately, in Scala, `Unit` is a real type, so you
 can write `(Int) => Unit` for a function which takes an integer
 and doesn't return a useful value.  This means you can pass `void` methods
 interchangeably with non-`void` methods, which is a Good Thing.
@@ -385,6 +387,8 @@ Using tuples, our timed HTTP request might look like this:
 The reason this keeps getting verbose on us is that C# doesn’t provide any
 syntatical support for tuples. To C#, a `Tuple<>` is just another generic
 type.
+
+*The upcoming C# 7 release will have support for Tuples, which will function much like Scala tuples*
 
 Really, what we're really trying to articulate by returning a `Tuple<>` is,
 "this method has several outputs." So what do we want to do with those
@@ -685,11 +689,41 @@ In Scala, Generics are defined within _square brackets_, not _angle brackets_:
 
     class Box[T]
 
-A generic type can be constrained with
+The most often used features of generics are found both in C# and in Scala.
+There is also some disparity.
 
-- upper bounds `<:` (the generic type must be a subtype of another type)
-- lower bounds `>:` (the generic type must be a supertype of another type)
-- context bounds `:` (the generic type must support the operations described by another type)
+### Constraints
+
+Just like in C#, generic types can be constrained in some way. Scala has 
+upper bounds, where the generic type must be a subtype of another type,
+lower bounds, where the generic type must be a supertype of another type,
+and context bounds, where there must be some implicit available.
+
+Scala doesn't have constraints on `struct` or `class` as there is no
+conceptual difference in Scala, though you can constraint to an upper
+bound of `AnyVal` or `AnyRef` (see [the section on structs](#Structs))
+
+The following table shows how to use generic constraints in scala:
+
+|               | C#                                   | Scala                          |
+|---------------|--------------------------------------|--------------------------------|
+| Upper bound   | `class Upper<A> where A : Supertype` | `class Upper[A <: Supertype]`  |
+| Lower bound   | no equivalent                        | `class Lower[A >: Subtype]`    |
+| Context bound | no equivalent                        | `class Context[A : ContextType]` |
+| new           | `class Default<A> where A : new`     | no equivalent                  |
+| struct        | `class Structy<A> where A : struct`  | `class Vally[A <: AnyVal]`     |
+| class         | `class Classy<A> where A : class`    | `class Reffy[A <: AnyRef]`     |
+
+
+### Variance
+
+Opposed to C#, where only interfaces and delegates can have variance, in Scala, all things
+that can be generic in can have variance. Varaince is indicated with a `+` in front of the
+type for covariance, and a `-` in front of the type for contravariance
+
+`class Box[+T]` declares a class Box that is covariant in it's parameter `T`, much like
+the C# interface `interface IBox<out T>` would be. `trait PrettyPrinter[-T]` is contravaraint
+in its paramter T, just like the C# interface `interface IPrettyPrinter<in T>` would be.
 
 ## Implicits
 
