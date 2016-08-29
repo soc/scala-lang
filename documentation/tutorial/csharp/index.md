@@ -6,8 +6,6 @@ disqus: true
 by: Ivan Towlson
 ---
 
-
-
 ## Introduction
 
 Scala is a hybrid of functional and object-oriented languages.
@@ -20,7 +18,7 @@ Scala shares many features and concepts with C#, as well as introducing
 many that are new.  In fact, some of the capabilities that people talk
 about a lot in Scala introductions or Java-to-Scala guides are very
 familiar to C# programmers.  For example, as a C# programmer, you don't
-need to be gently walked through the idea of function types -- you've
+need to be gently walked through the idea of function types – you've
 been using delegates and lambdas for years.
 
 However, some Scala features and behaviours are quite different from C#,
@@ -35,14 +33,35 @@ basics from a C# programmer's point of view.
 - The type is always written after the identifier, seperated by a `:`.
 - Scala's stylistic guidelines differ from those of C#. The *Scala Style Guide*
   provides an comprehensive overview of the encouraged style. Some examples:
- - Semicola are generally not required and left out.
- - Types always start with an uppercase letter.
- - Methods, values and variables start with a lowercase letter.
- - The opening curly brace is not placed on a new line.
+  - Semicola are generally not required and left out.
+  - Types always start with an uppercase letter.
+  - Methods, values and variables start with a lowercase letter.
+  - The opening curly brace is not placed on a new line.
 
 ## Literals
 
-**TODO**
+Most literals look and work the same way in Scala and C#. There are a few differences though:
+
+- C#'s verbatim string literals `@"one \ two \ three"` are written as `"""one \ two \ three"""` in Scala.
+
+- C# 6 added string interpolation to the language: `$"Hello {name}"`.
+
+  Scala is more flexible: Any method defined on `StringContext` can be used for string interpolation and can
+  provide its own semantics.
+
+  The following string interpolators are provided by default:
+
+  - **`s`** – Similar to C#'s interpolation, `s` converts its arguments to strings: `s"Hello $name"`
+  - **`f`** – Provides formatting capabilities of `String.format`, but checked at compile-time:
+    `f"$PI%.4f"` formats the floating point value `PI`, rounding it to four decimal digits after the decimal dot.
+
+- Scala does not have special syntax for arrays.
+
+  Arrays are created with `Array("Hello", "world!")`.
+
+  Array elements are accessed with `arr(1)` and updated with `arr(1) = "planet!"`.
+
+  All of these constructs are defined in the standard library, not the language itself.
 
 ## Classes
 
@@ -180,8 +199,6 @@ be mutable or immutable.
 
 ### Default and Named Parameters
 
-**TODO**
-
 C++, Visual Basic and C# optional parameters have fixed defaults specified
 by the called function. For example, if you have a method like this:
 
@@ -189,6 +206,14 @@ by the called function. For example, if you have a method like this:
 
 and you call `Fie(456)`, it’s always going to be equivalent to calling
 `Fie(456, 123)`.
+
+Scala provides named parameters and default arguments:
+
+    def fie(a: Int, b: Int = 123) = ...
+    fie(456) // or fie(a = 456)
+
+Unlike C#, Scala stores default values at the definition of the method, not its usage.
+This means that callers of a method don't need to be recompiled when a default is changed.
 
 ### Naming and Calling Methods
 
@@ -656,9 +681,15 @@ appropriate implementations of the `ifThenElse` method.
 
 ## Generics
 
-**TODO**
+In Scala, Generics are defined within _square brackets_, not _angle brackets_:
 
-### Type Erasure
+    class Box[T]
+
+A generic type can be constrained with
+
+- upper bounds `<:` (the generic type must be a subtype of another type)
+- lower bounds `>:` (the generic type must be a supertype of another type)
+- context bounds `:` (the generic type must support the operations described by another type)
 
 ## Implicits
 
@@ -888,17 +919,15 @@ the `List` or `String` concatenator every time you call it: the compiler
 knows what you’re concatenating; specifying how to concatenate it just
 gives you a chance to get it wrong!
 
-Consequently, implicit parameters – like implicit conversions – contribute
-to Scala’s ability to support internal DSLs. By setting up appropriate
-implicits, you can write code that reads much more naturally than if you
-had to pepper it with function objects or callbacks.
-
 ### Conclusion
 
 Scala’s `implicit` keyword goes beyond C#’s equivalent.  As in C#, it is
 used for implicit conversions; unlike C#, this is the idiomatic way to add
 operations to an existing type, removing the need for the separate
-extension method syntax. Implicit parameters have no equivalent in C#.
+extension method syntax.
+
+
+Implicit parameters have no equivalent in C#.
 They are like being able to add default values to a method: just as a C#
 using statement bring implicit methods into scope, a Scala import statement
 can bring default values into scope. If implicit conversions are a way of
