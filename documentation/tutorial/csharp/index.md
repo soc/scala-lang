@@ -327,18 +327,20 @@ Scala has the same concept and ships with classes like `Function0[R]`,
 Unlike C#, the language natively supports them, so that function types
 can be spelled as `(T1, T2) => R` instead of `Function2[T1, T2, R]`.
 For example, a predicate of integers would be of type `(Int) => Boolean`.
-If there is only one input type, the parens can be left out like this:
-`Int => Boolean`.
+If there is only one input type, the parentheses can be left out like this:
+`Int => Boolean`. This should look familiar to you, as it echoes the
+notation both Scala and C# use for lambda functions: `(i: Int) => i > 7`
+is of type `Int => Boolean`.
 
-Effectively, Scala gets rid of all those weird custom delegate types
-like `Predicate<T>` and `Comparer<T>` and has a single family of
-function types like the C# `Func<...>` family.
+Scala has no need for custom delegate types like `Predicate<T>` and
+`Comparer<T>` and has a single family of function types like the C#
+`Func<...>` family.
 
 Refering to methods that don't have a return value in C# is not
 possible with `Func<T, void>`, because void isn't a valid type.
 It is necessary to write `Action<T>` instead. Scala doesn't have
 different families of delegate types, it just has the built-in
-function types.  Fortunately, in Scala, `Unit` is a real type, so you
+function types. Fortunately, in Scala, `Unit` is a real type, so you
 can write `(Int) => Unit` for a function which takes an integer
 and doesn't return a useful value.  This means you can pass `void` methods
 interchangeably with non-`void` methods, which is a Good Thing.
