@@ -36,11 +36,14 @@ One or more expressions and declarations surrounded by curly braces. When the bl
 * #### bound variable
 A bound variable of an expression is a variable that’s both used and defined inside the expression. For instance, in the function literal expression `(x: Int) => (x, y)`, both variables `x` and `y` are used, but only `x` is bound, because it is defined in the expression as an `Int` and the sole argument to the function described by the expression.
 
+* #### boxing and unboxing
+Over the lifetime of a value type instance, the runtime may transform it back and forth between a primitive representation and a reference type that acts as wrapper around that value. This transformation is called boxing and unboxing. It often occurs when value types are passed as arguments to generic functions as they solely work with reference types underneath.
+
 * #### by-name parameter
-A parameter that is marked with a `=>` in front of the parameter type, e.g., `(x: => Int)`. The argument corresponding to a by-name parameter is evaluated not before the method is invoked, but each time the parameter is referenced by name inside the method. If a parameter is not by-name, it is by-value.
+A parameter that is marked with a `=>` in front of the parameter type, e.g., `(x: => Int)`. The argument corresponding to a by-name parameter is evaluated not before the method is invoked, but each time the parameter is referenced by name inside the method. If a parameter is not by-name, it is [by-value](#by-value-parameter).
 
 * #### by-value parameter
-A parameter that is not marked with a `=>` in front of the parameter type, e.g., `(x: Int)`. The argument corresponding to a by-value parameter is evaluated before the method is invoked. By-value parameters contrast with by-name parameters.
+A parameter that is not marked with a `=>` in front of the parameter type, e.g., `(x: Int)`. The argument corresponding to a by-value parameter is evaluated before the method is invoked. By-value parameters contrast with [by-name parameters](#by-name-parameter).
 
 * #### class
 Defined with the `class` keyword, a _class_ may either be abstract or concrete, and may be parameterized with types and values when instantiated. In `new Array[String](2)`, the class being instantiated is `Array` and the type of the value that results is `Array[String]`. A class that takes type parameters is called a _type constructor_. A type can be said to have a class as well, as in: the class of type `Array[String]` is `Array`.
@@ -184,7 +187,7 @@ Meta-programming software is software whose input is itself software. Compilers 
 A _method_ is a function that is a member of some class, trait, or singleton object.
 
 * #### mixin
-_Mixin_ is what a trait is called when it is being used in a mixin composition. In other words, in “`trait Hat`,” `Hat` is just a trait, but in “`new Cat extends AnyRef with Hat`,” `Hat` can be called a mixin. When used as a verb, “mix in” is two words. For example, you can _mix_ traits _in_to classes or other traits.
+_Mixin_ is what a trait is called when it is being used in a mixin composition. In other words, in “`trait Hat`,” `Hat` is just a trait, but in “`new Cat extends AnyRef with Hat`,” `Hat` can be called a mixin. When used as a verb, “mix in” is two words. For example, you can *mix* traits *in*to classes or other traits.
 
 * #### mixin composition
 The process of mixing traits into classes or other traits. _Mixin composition_ differs from traditional multiple inheritance in that the type of the super reference is not known at the point the trait is defined, but rather is determined anew each time the trait is mixed into a class or other trait.
@@ -231,6 +234,10 @@ A _predicate_ is a function with a `Boolean` result type.
 * #### primary constructor
 The main constructor of a class, which invokes a superclass constructor, if necessary, initializes fields to passed values, and executes any top-level code defined between the curly braces of the class. Fields are initialized only for value parameters not passed to the superclass constructor, except for any that are not used in the body of the class and can therefore be optimized away.
 
+* #### primitive type
+In addition to reference types, Java provides built-in types like `int`, `long`, `float` and `double`. These are called primitive types.
+From a Scala perspective, all primitive types extend `AnyVal` and are therefore [value types](#value-type).
+
 * #### procedure
 A _procedure_ is a function with result type of `Unit`, which is therefore executed solely for its side effects.
 
@@ -272,6 +279,10 @@ The Java Virtual Machine, or [JVM](#jvm), that hosts a running Scala program. Ru
 
 * #### runtime type
 The type of an object at run time. To contrast, a [static type](#static-type) is the type of an expression at compile time. Most runtime types are simply bare classes with no type parameters. For example, the runtime type of `"Hi"` is `String`, and the runtime type of `(x: Int) => x + 1` is `Function1`. Runtime types can be tested with `isInstanceOf`.
+
+* #### SAM type (single abstract method type)
+A trait which can contain multiple methods, but only a single one of them is allowed to be abstract.
+A function literal can be passed wherever a SAM type is expected. Examples of SAM types are Scala's `Function` types, the types in `java.util.function`, `Comparable`, `Ordered` and `Runnable`.
 
 * #### script
 A file containing top level definitions and statements, which can be run directly with `scala` without explicitly compiling. A script must end in an expression, not a definition.
@@ -360,8 +371,17 @@ A method’s _type signature_ comprises its name, the number, order, and types o
 * #### uniform access principle
 The _uniform access principle_ states that variables and parameterless functions should be accessed using the same syntax. Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions. As a result, a parameterless function definition can be changed to a `val`, or _vice versa_, without affecting client code.
 
+* #### universal trait
+  A trait that extends `Any`.
+
+  Such a trait can only have methods as as members (not values or variables).
+
+  It cannot do any initialization or use operations that expect that values of the trait are references, like reference equality (`eq`, `neq`) or locking (`synchronized`, `wait`, ...).
+
+  [Value types](#value-type) can only extend universal traits.
+
 * #### unreachable
-At the Scala level, objects can become _unreachable_, at which point the memory they occupy may be reclaimed by the runtime. Unreachable does not necessarily mean unreferenced. Reference types (instances of `AnyRef`) are implemented as objects that reside on the JVM’s heap. When an instance of a reference type becomes unreachable, it indeed becomes unreferenced, and is available for garbage collection. Value types (instances of `AnyVal`) are implemented as both primitive type values and as instances of Java wrapper types (such as `java.lang.Integer`), which reside on the heap. Value type instances can be boxed (converted from a primitive value to a wrapper object) and unboxed (converted from a wrapper object to a primitive value) throughout the lifetime of the variables that refer to them. If a value type instance currently represented as a wrapper object on the JVM’s heap becomes unreachable, it indeed becomes unreferenced, and is available for garbage collection. But if a value type currently represented as a primitive value becomes unreachable, then it does not become unreferenced, because it does not exist as an object on the JVM’s heap at that point in time. The runtime may reclaim memory occupied by unreachable objects, but if an Int, for example, is implemented at run time by a primitive Java int that occupies some memory in the stack frame of an executing method, then the memory for that object is “reclaimed” when the stack frame is popped as the method completes. Memory for reference types, such as `Strings`, may be reclaimed by the JVM’s garbage collector after they become unreachable.
+At the Scala level, objects can become _unreachable_, at which point the memory they may occupy can be reclaimed by the runtime.
 
 * #### unreferenced
 See [unreachable](#unreachable).
@@ -370,7 +390,7 @@ See [unreachable](#unreachable).
 The result of any computation or expression in Scala is a _value_, and in Scala, every value is an object. The term value essentially means the image of an object in memory (on the JVM’s heap or stack).
 
 * #### value type
-A _value type_ is any subclass of `AnyVal`, such as `Int`, `Double`, or `Unit`. This term has meaning at the level of Scala source code. At runtime, instances of value types that correspond to Java primitive types may be implemented in terms of primitive type values or instances of wrapper types, such as `java.lang.Integer`. Over the lifetime of a value type instance, the runtime may transform it back and forth be- tween primitive and wrapper types (_i.e._, to box and unbox it).
+A _value type_ is any subclass of `AnyVal`, such as `Int`, `Double`, or `Unit`.
 
 * #### variable
 A named entity that refers to an object. A variable is either a `val` or a `var`. Both `val`s and `var`s must be initialized when defined, but only `var`s can be later reassigned to refer to a different object.
