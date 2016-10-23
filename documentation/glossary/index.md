@@ -60,6 +60,8 @@ A singleton object that shares the same name with a class defined in the same so
 * #### contravariant
 A _contravariant_ annotation can be applied to a type parameter of a class or trait by putting a minus sign (-) before the type parameter. The class or trait then subtypes contravariantly with—in the opposite direction as—the type annotated parameter. For example, `Function1` is contravariant in its first type parameter, and so `Function1[Any, Any]` is a subtype of `Function1[String, Any]`.
 
+* #### context bound
+
 * #### covariant
 A _covariant_ annotation can be applied to a type parameter of a class or trait by putting a plus sign (+) before the type parameter. The class or trait then subtypes covariantly with—in the same direction as—the type annotated parameter. For example, `List` is covariant in its type parameter, so `List[String]` is a subtype of `List[Any]`.
 
@@ -146,6 +148,11 @@ An object is _immutable_ if its value cannot be changed after it is created in a
 
 * #### imperative style
 The _imperative style_ of programming emphasizes careful sequencing of operations so that their effects happen in the right order. The style is characterized by iteration with loops, mutating data in place, and methods with side effects. It is the dominant paradigm of languages such as C, C++, C# and Java, and contrasts with the [functional style](#functional-style).
+
+* #### implicit
+The `implicit` keyword can be added to method, value, variable and class definitions and parameter lists. Classes marked with `implicit` are called [implicit classes](#implicit-class). Parameter lists marked with `implicit` are used for [context bounds](#context-bound). Methods marked with `implicit` are called `implicit conversions`
+
+* #### implicit class
 
 * #### initialize
 When a variable is defined in Scala source code, you must initialize it with an object.
@@ -316,6 +323,9 @@ An expression, definition, or import, _i.e._, things that can go into a template
 
 * #### static type
 See [type](#type).
+
+* #### string interpolation
+A string literal with a leading identifier uses string interpolation. `x"Hello $name"` is called a _processed string_. `$name` refers to `name` in scope. The leading `x` determines which interpolator implementation is used to process the given string. The Scala standard library provides the `s`, `f` and `raw` interpolators by default. Additional string interpolators can be defined by enriching `scala.StringContext` with an [implicit class](#implicit-class).
 
 * #### structural type
 A [refinement type](#refinement-type) where the refinements are for members not in the base type. For example, `{ def close(): Unit }` is a structural type, because the base type is `AnyRef`, and `AnyRef` does not have a member named `close`.
