@@ -33,18 +33,30 @@ td {
 
 <div class="page-container">
   <div class="container" style="min-height: 540px;">
-    <div class="row">
-      <div class="col-md-12">
-          <div class="main-page-column" style="width: 100%;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            {% include translation-links.html %}
             {% if page.by %}
               <div class="written">Written By: <span class="by">{{ page.by }}</span></div>
             {% endif %}
             {{ content }}
           </div>
-      </div>
-    </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div class="contents">Contents</div>
+              <div id="toc"></div>
+              <br/>
+              <div class="alert-info">
+                <a href="/contribute/documentation.html#updating_scalalangorg"><p><strong>Problem with this page?</strong>
+                Please help us fix it!</p></a>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
   </div>
 </div>
 
-{% include footertop.html %}
-{% include footerbottom.html %}
+{% include footer.html %}

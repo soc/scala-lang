@@ -36,7 +36,7 @@
     </div>
     <div class="container">
       <div class="copyright">
-        <a style="float: left; margin-right: 8px;" href="http://www.epfl.ch"><img src="{{ site.baseurl }}/resources/img/epfl-logo.png" alt="EPFL logo" /></a>
+        <!--<a style="float: left; margin-right: 8px;" href="http://www.epfl.ch"><img src="{{ site.baseurl }}/resources/img/epfl-logo.png" alt="EPFL logo" /></a>-->
         <p style="float: left;">
           Copyright &copy; 2002-<span class="current-year"></span> <a href="epfl.ch">École Polytechnique Fédérale de Lausanne (EPFL), Lausanne, Switzerland</a><br/>
           Copyright &copy; 2015-2016 <a href="https://github.com/soc/scala-lang/graphs/contributors">Scala community contributors</a> – Person responsible for this website: <a href="https://github.com/soc">Simon Ochsenreither</a><br/>
@@ -85,15 +85,15 @@
             var bottomOfSidebarInner = $(".sidebar-inner").offset().top + $(".sidebar-inner").outerHeight();
             var topOfFooter = $("footer").offset().top - 10;
             var footerHeight = $("footer").outerHeight();
-            if (topOfScroll > topOfSidebar) {
-              if (bottomOfSidebarInner > topOfFooter) {
+            {% unless page.layout == 'page-release' %}
+            if (topOfScroll > topOfSidebar)
+              if (bottomOfSidebarInner > topOfFooter)
                 sidebarInner.css({position:"fixed",bottom:footerHeight,top:""});
-              } else {
+              else
                 sidebarInner.css({position:"fixed",top:"10px",bottom:""});
-              }
-            } else {
+            else
+            {% endunless %}
               sidebarInner.css({position:"relative",top:""});
-            }
           };
           $(window).scroll(a);a()
         }

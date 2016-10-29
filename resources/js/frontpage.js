@@ -124,13 +124,13 @@ $(document).ready(function(){
   ["#nutshell", "#editors", "#tooling"].forEach(
     cat => snippetAndExpansionState[cat] = { activeSnippetName: undefined, activeSnippetExplanation: undefined, activeExpansionTarget: undefined });
 
-  ["#java-interop", "#expressive", "#concurrency-distribution", "#traits", "#pattern-matching", "#higher-order-functions", "#extensible", "#scalable", "#stable"]
+  ["#java-interop", "#expressive", "#concurrency-distribution", "#traits", "#pattern-matching", "#higher-order-functions"/*, "#extensible", "#scalable", "#stable"*/]
     .forEach(it => $(it).click(()=> showRequestedSnippet("#nutshell", it, true)));
 
   ["#eclipse", "#intellij", "#emacs", "#sublime", "#atom", "#vim"]
     .forEach(it => $(it).click(()=> showRequestedSnippet("#editors", it, true)));
 
-  ["#sbt", "#stylelint", "#compat"]
+  ["#sbt"/*, "#stylelint", "#compat"*/]
     .forEach(it => $(it).click(()=> showRequestedSnippet("#tooling", it, true)));
 
   // truncate main visible news item if it exceeds height of sidebar

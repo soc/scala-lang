@@ -111,6 +111,21 @@ body {
   line-height: 1.3em;
 }
 
+blockquote {
+  font-style: italic;
+  padding: 10px 20px;
+  background-color: #EEEEEE;
+}
+
+blockquote:before {
+  color: #ccc;
+  content: "“";
+  font-size: 5em;
+  line-height: 0.0em;
+  margin-left: -0.25em;
+  vertical-align: -0.5em;
+}
+
 a:link, a:visited {
   color: #27B3D9;
   transition: color .1s ease-in;
@@ -1979,7 +1994,7 @@ figcaption {
   height: 100%;
   float: left;
   display: block;
-  width: 610px;
+  max-width: 610px;
   background: white;
   padding-top: 24px;
   padding-left: 9999em;
